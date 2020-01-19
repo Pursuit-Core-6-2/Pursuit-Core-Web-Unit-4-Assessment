@@ -1,0 +1,14 @@
+/*
+JOSEPH P. PASAOA
+Aboutpage Component Styling | YouTube Abbreviated | Unit 4 Assessment
+*/
+
+
+h1 {
+  font-size: 3em;
+}
+
+.body-about {
+  width: 500px;
+  margin: 0 auto;
+}

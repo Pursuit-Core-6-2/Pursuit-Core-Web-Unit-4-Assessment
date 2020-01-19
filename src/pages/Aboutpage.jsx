@@ -7,7 +7,7 @@ Aboutpage Component | YouTube Abbreviated | Unit 4 Assessment
 /* IMPORTS */
 import React from 'react';
 
-// import './Aboutpage.css';
+import './Aboutpage.css';
 
 
 /* COMPONENT + EXPORT */
@@ -15,7 +15,7 @@ const Aboutpage = () => {
 
   return(
     <div className="stage">
-      <h1>About the Developer</h1>
+      <h1>About YouTube Abbreviated</h1>
       <div className="body-about">
         
         <p>
