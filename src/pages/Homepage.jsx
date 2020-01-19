@@ -8,13 +8,14 @@ Homepage Component | YouTube Abbreviated | Unit 4 Assessment
     // external
 import React, { Component } from 'react';
 // import { Switch, Route } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
     // local
+import './Homepage.css';
 const {
   processInput
 } = require('../helpers/globalHelp.jsx');
-// import './Homepage.css';
+
 
 
 
@@ -22,6 +23,7 @@ const {
 export default class Homepage extends Component {
   state = {
     searchTxt: "",
+    errorMessage: "",
     results: [],
     isBeginning: true
   }
@@ -29,6 +31,12 @@ export default class Homepage extends Component {
     msgWelcome: <p>Search for videos above!</p>,
     msgEmpty: <p>Sorry, no search results found. Try your search again above.</p>
   }
+
+
+  componentDidUpdate = () => {
+    // console.log("componentDidUpdate");
+  }
+
 
   handleChange = (e) => {
     this.setState({
@@ -38,11 +46,25 @@ export default class Homepage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    processInput(this.state.searchTxt, "HIT");
+    const { pass, payload } = processInput(this.state.searchTxt, "searchTxt");
+    if (!pass) {
+      this.setState({
+          errorMessage: payload
+      });
+    } else {
+      console.log("Hit");
+    }
+    
   }
 
+
+  getSearchResults = async () => {
+
+  }
+
+
   render() {
-    const { searchTxt, results, isBeginning } = this.state;
+    const { searchTxt, errorMessage, results, isBeginning } = this.state;
     const { msgWelcome, msgEmpty } = this.hardData;
 
     let listResults = null;
@@ -63,6 +85,8 @@ export default class Homepage extends Component {
           <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
           <button className="btn-search">Search</button>
         </form>
+
+        <div className="msg-error">{errorMessage}</div>
 
         {showing}
 
