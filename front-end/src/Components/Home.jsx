@@ -9,7 +9,8 @@ class Home extends React.Component {
         super()
         this.state = {
             search: "",
-            searchResults: []
+            searchResults: [],
+         
         }
     }
 
@@ -52,7 +53,8 @@ class Home extends React.Component {
                 autoplay: 0
             }
         }
-        return (
+        if (search && searchResults.length>0 ||searchResults.length>0 ){
+            return (
             <div className="Home">
                 <form onSubmit={this.handleSubmit}>
                     <input className="searchInput" type="text" placeholder="Search video" onChange={this.handleSearch} value={search} />
@@ -64,15 +66,15 @@ class Home extends React.Component {
                             <Link to={`/video/${result.id.videoId}`}>
 
 
-                                <YouTube
+                                {/* <YouTube
                                     className="searchResults"
                                     videoId={result.id.videoId}
                                     opts={opts}
                                     onReady={this.videoOnReady}
 
-                                />
+                                /> */}
 
-                                {/* <img className="searchResults" src={result.snippet.thumbnails.high.url} /> */}
+                                <img className="searchResults" src={result.snippet.thumbnails.high.url} />
                                 <h3 className="searchTitleName">{result.snippet.title}</h3>
                             </Link>
 
@@ -84,6 +86,21 @@ class Home extends React.Component {
 
             </div>
         );
+    
+
+        }else {
+
+            return (
+                <div className="Home">
+                    <form onSubmit={this.handleSubmit}>
+                        <input className="searchInput" type="text" placeholder="Search video" onChange={this.handleSearch} value={search} />
+                        <input className="submitButton" type="submit" value="search" />
+                    </form>
+                    <p className ="noResult">No Search Results Yet! Please Submit a Search Above!</p>
+                </div>
+            );
+
+        }
     }
 
 }
