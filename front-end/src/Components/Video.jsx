@@ -68,12 +68,12 @@ class Video extends React.Component {
                     opts={opts}
                     onReady={this.videoOnReady}
                 />
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Name</label>
+                <form className="videoSubmit" onSubmit={this.handleSubmit}>
+                    <label htmlFor="name">Name:</label>
                     <input className="name" onChange={this.handleName} placeholder="Name..." />
-                    <label htmlFor="comment">Comment</label>
+                    <label htmlFor="comment">Comment:</label>
                     <input className="comment" onChange={this.handleComment} placeholder="..." />
-                    <input type="submit" value="Submit" />
+                    <input className ="videoInputSubmit"type="submit" value="Submit" />
                 </form>
             </div>
         );
