@@ -1,0 +1,130 @@
+body {
+  background-image: linear-gradient(to right top, #9359e1, #8e65e4, #8a70e6, #877ae8, #8683e8, #7f8eed, #7a98f1, #77a2f3, #6fb0f8, #6cbcfc, #70c9fd, #79d4fd);
+  height: 100vh;
+  background-repeat: no-repeat;
+  margin: 0px;
+  background-attachment: fixed;
+}
+
+.App {
+  text-align: center;
+}
+
+.Navbar {
+  display: flex;
+  background-color: blue;
+  color: white;
+  text-align: left;
+  padding-left: 25px;
+  padding-bottom: 2px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Navbar-logo {
+  width: 50px;
+  margin-right: 20px;
+}
+
+.Navbar-link {
+  color: white;
+  margin-right: 20px;
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.About-body {
+  background-color: #0CD6C9;
+  padding: 40px;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 20px;
+  border: 3px solid green;
+}
+
+.Home-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.Home-video-title {
+  width: 480px;
+  color: white;
+  font-size: large;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.Home-form {
+  display: flex;
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+}
+
+.Home-input {
+  width: 600px;
+  height: 25px;
+}
+
+.Home-button {
+  background-color: blue;
+  color:white
+}
+
+.Video-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.Video-input {
+  height: 25px;
+}
+
+.Video-button {
+  margin-top: 10px;
+  width: 100px;
+  background-color: #0000ff;
+  color: white;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+.Video-comments {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.Video-comment {
+  background-color: #0CD6C9;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.Video-comment-name {
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.Video-comment-body {
+  margin: 0px;
+}
+
+.Video-label {
+  margin-bottom: 2px;
+}
