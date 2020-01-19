@@ -14,7 +14,7 @@ class HomePage extends React.Component {
         }
     }
 
-    compoundDidMount () {}
+ 
 
     handleInputChange = (e) => {
         console.log('search', e.target.value)
@@ -34,8 +34,12 @@ class HomePage extends React.Component {
             let searchUrl = `https://www.googleapis.com/youtube/v3/search/${params}`
             let response = await axios.get(searchUrl)
             console.log('response', response.data.items)
+            
+            const data  = response.data.items
+            
+            // console.log('data', data)
             this.setState({
-                results: response.data.items
+                results: data
             })
 
 
@@ -54,10 +58,8 @@ class HomePage extends React.Component {
                     <input type='text' onChange={this.handleInputChange} value={search}/>
                     <button>Search</button>
                     <p>No Search Results Yet. Search for videos here!</p>
-                    
-                   
-                    
-                     <SearchResults
+
+                    <SearchResults
                         results={results}
                     />  
                     
