@@ -11,7 +11,8 @@ class Video extends React.Component {
         this.state = {
             name: "",
             comment: '',
-            nameAndComment: []
+            nameAndComment: {},
+            counter: 0,
         }
     }
 
@@ -30,29 +31,23 @@ class Video extends React.Component {
             comment: event.target.value
         })
     }
-    async componentDidMount() {
-        const { id } = this.props.match.params
-        try {
-
-            const videoUrl = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${API_KEY}&part=snippet`
-            let videoUrlResponse = await axios.get(videoUrl)
-            console.log(videoUrlResponse.data)
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // async componentDidMount() {
+    //  
+    // }
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { name, comment, nameAndComment } = this.state
-        // let videoUrl=`https://www.googleapis.com/youtube/v3/videos?id=gl1aHhXnN1k&key=${API_KEY}&part=snippet`
-        // let videoUrlResponse = await axios.get(videoUrl)
-        // console.log(videoUrlResponse)
-        //       
+        const { name, comment, nameAndComment, counter } = this.state
+   
+
+        this.setState({
+            nameAndComment: nameAndComment.concat(name)
+        })
+
     }
 
     render() {
         const { name, comment, nameAndComment } = this.state
+        console.log(this.state.nameAndComment)
         const { id } = this.props.match.params
         const opts = {
             height: '390',
@@ -73,8 +68,11 @@ class Video extends React.Component {
                     <input className="name" onChange={this.handleName} placeholder="Name..." />
                     <label htmlFor="comment">Comment:</label>
                     <input className="comment" onChange={this.handleComment} placeholder="..." />
-                    <input className ="videoInputSubmit"type="submit" value="Submit" />
+                    <input className="videoInputSubmit" type="submit" value="Submit" />
                 </form>
+                <h1 className="singlName">{name}</h1>
+                <p className="singleComment">{comment}</p>
+
             </div>
         );
     }
