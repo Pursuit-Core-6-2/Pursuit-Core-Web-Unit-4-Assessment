@@ -65,3 +65,13 @@
   width: 320px;
   height: 180px;
 }
+
+
+.formDiv {
+   padding: 15px;
+   margin: 0;
+}
+
+.formDiv label {
+  text-align: left;
+}

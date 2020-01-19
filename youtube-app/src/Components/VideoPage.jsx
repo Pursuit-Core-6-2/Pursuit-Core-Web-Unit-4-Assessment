@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import YouTube from 'react-youtube';
  
-class Example extends Component {
+class VideoPage extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -21,24 +21,32 @@ class Example extends Component {
       playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1
       }
-    };
+    }
     return (
+     <div className="videoDiv">
       <YouTube
-        videoId=""
+        videoId={this.props.selectedVidId}
         opts={opts}
         onReady={this.onReady}
       />
-      <div>
+         <div className="formDiv">
           <form>
-            <input></input>
-            <input></input>
-            <button></button>
+            <label>Name</label><br></br>
+            <input type="text" placeholder="Name.."></input>
+            <br></br>
+            <label>Comment</label>
+            <br></br>
+            <input type="text" placeholder="..."></input>
+            <button>Submit</button>
           </form>
           <ul>
-              
+
           </ul>
+          </div>
       </div>
     );
   }
 }
+
+export default VideoPage;
  

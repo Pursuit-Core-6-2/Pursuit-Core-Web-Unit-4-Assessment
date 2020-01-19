@@ -18,12 +18,13 @@ class App extends Component {
       this.state = {
         searchEntered: false,
         input:'',
-        resultsArr: []
+        resultsArr: [],
+        selectedVid: false,
+        selectedVidId: ''
       }
   }
 
   handleInput = (event) => {
-    console.log('input')
     let search = event.target.value
     this.setState({
       input: search
@@ -32,7 +33,6 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('form submitted')
     this.setState({
       searchEntered: true
     })
@@ -50,15 +50,18 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    console.log('event inner text', event.target.innerText)
     console.log('video id', event.target.id)
-    
+    let videoId = event.target.id
+    this.setState({
+      selectedVid: true,
+      selectedVidId: videoId
+    })
   }
 
 
   render(){
     console.log(this.state)
-    const {searchEntered, resultsArr} = this.state
+    const {searchEntered, resultsArr, selectedVid, selectedVidId} = this.state
     const {handleInput, handleSubmit, handleClick } = this
   return (
     <div className="App">
@@ -90,6 +93,8 @@ class App extends Component {
             handleInput= {handleInput}
             handleSubmit={handleSubmit}
             handleClick={handleClick}
+            selectedVid={selectedVid}
+            selectedVidId={selectedVidId}
             />
           </Route>
           </div>

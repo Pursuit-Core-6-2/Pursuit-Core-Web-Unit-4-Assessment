@@ -1,7 +1,7 @@
 import React from 'react';
 
-const VideoSnippet = (props) => {
-    const {title, imgSrc, handleClick, vidId} = props
+const VideoSnippet = (props) =>  {
+    const {title, imgSrc, vidId, handleClick} = props
      return (
              <li>
                 <div>
@@ -9,9 +9,10 @@ const VideoSnippet = (props) => {
                     <p id={vidId} onClick={handleClick}>{title}</p>
                 </div>
              </li>
-                  
      )
+     
  }
+
 
 
 export default VideoSnippet;

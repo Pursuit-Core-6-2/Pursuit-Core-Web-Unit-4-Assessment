@@ -1,14 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Results from './Results'
 
-class Home extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
-    render(){
-    const {searchEntered, resultsArr, handleInput, handleSubmit, handleClick} = this.props 
+const Home = (props) => {
+    const {searchEntered, resultsArr, selectedVid, selectedVidId, handleInput, handleSubmit, handleClick} = props
+    if (!selectedVid) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -19,10 +14,23 @@ class Home extends Component {
             searchEntered={searchEntered}
             resultsArr={resultsArr}
             handleClick={handleClick}
+            selectedVid={selectedVid}
+            selectedVidId={selectedVidId}
             />
         </div>
     )
+    } else {
+        return (
+            <Results 
+            searchEntered={searchEntered}
+            resultsArr={resultsArr}
+            handleClick={handleClick}
+            selectedVid={selectedVid}
+            selectedVidId={selectedVidId}
+            />
+        )
+    }
  }
-}
+
 
 export default Home;
