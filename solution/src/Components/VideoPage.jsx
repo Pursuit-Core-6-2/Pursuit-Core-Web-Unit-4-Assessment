@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Youtube from 'react-youtube'
 import apiKey from '../secrets'
 
 class VideoPage extends React.Component {
@@ -31,6 +32,10 @@ class VideoPage extends React.Component {
             commentVal: e.target.value
         })
     }
+
+    onReady = (e) => {
+        e.target.pauseVideo()
+    }
     componentDidMount = async () => {
         const {id} = this.props.match.params
         try{
@@ -43,12 +48,15 @@ class VideoPage extends React.Component {
         }  
     }
     render(){
-        const {nameVal, commentVal, id} = this.state
+        const {nameVal, commentVal} = this.state
+        const {id} = this.props.match.params
         return(
             <>
-            <div>
-                <iframe width="560" height="315" src={`https://www.youtube.com/embed/videoseries?list=${id}`} frameborder="0"></iframe>
-            </div>
+            <Youtube
+                videoId = {id}
+                id= 'FBZ'
+                onReady = {this.onReady}
+            />
             <div>
                 <form onSubmit={this.handleSubmitForm}>
                     <label>
