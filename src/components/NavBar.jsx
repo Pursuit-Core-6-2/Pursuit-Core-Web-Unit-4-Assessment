@@ -22,7 +22,7 @@ const NavBar = () => {
   return(
     <ul className="nav-bar">
       <Logo />
-      <NavLink className='nav-link' to={`/`}>Home</NavLink>
+      <NavLink className='nav-link' exact to={`/`}>Home</NavLink>
       <NavLink className='nav-link' to={`/about`}>About</NavLink>
     </ul>
   );

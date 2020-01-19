@@ -4,6 +4,16 @@ Homepage Page Component Styling | YouTube Abbreviated | Unit 4 Assessment
 */
 
 
+.form-homesearch {
+  margin: 22px auto;
+  width: 60vw;
+}
+
+.input-search {
+  width: 80%;
+  margin: 45px auto;
+}
+
 .result-response {
   grid-column: span 2;
 }

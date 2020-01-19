@@ -22,3 +22,20 @@ h2 {
   color: red;
   font-weight: bold;
 }
+
+input[type="text"] {
+  height: 1.2em;
+  border-radius: 3px;
+  margin-right: 6px;
+  padding: 3px;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+button {
+  height: 2em;
+  border-radius: 13px;
+  padding: 0px 16px;
+  margin: 0px 6px;
+}

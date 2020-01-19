@@ -36,11 +36,6 @@ export default class Homepage extends Component {
   }
 
 
-  componentDidUpdate = () => {
-    // console.log("componentDidUpdate");
-  }
-
-
   handleChange = (e) => {
     this.setState({
         [e.target.name]: e.target.value
@@ -57,6 +52,11 @@ export default class Homepage extends Component {
     } else {
       this.getSearchResults(payload);
     }
+  }
+
+  handleClear = (e) => {
+    e.preventDefault();
+    this.setState({ searchTxt: "" });
   }
 
 
@@ -116,8 +116,17 @@ export default class Homepage extends Component {
     return(
       <div className="stage">
         <form onSubmit={this.handleSubmit} className="form-homesearch">
-          <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
+          <input 
+            type="text" 
+            name="searchTxt" 
+            className="input-search" 
+            value={searchTxt} 
+            onChange={this.handleChange} 
+            placeholder="Search..." 
+            required 
+          />
           <button className="btn-search">Search</button>
+          <button className="btn-clear" onClick={this.handleClear}>Clear</button>
         </form>
 
         <div className="msg-error">{errorMessage}</div>

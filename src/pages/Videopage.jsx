@@ -30,11 +30,6 @@ export default class Videopage extends Component {
   }
 
 
-  componentDidUpdate = () => {
-    // console.log("componentDidUpdate");
-  }
-
-
   handleChange = (e) => {
     this.setState({
         [e.target.name]: e.target.value
@@ -118,6 +113,7 @@ export default class Videopage extends Component {
             ref="input" 
             value={nameTxt} 
             onChange={this.handleChange} 
+            required 
           />
 
           <label htmlFor="commentTxt">Comment</label>
@@ -129,6 +125,7 @@ export default class Videopage extends Component {
             ref="input" 
             value={commentTxt} 
             onChange={this.handleChange} 
+            required 
           />
 
           <button className="btn-search">Search</button>
