@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchFeed from './SearchFeed.jsx';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-
+import About from './About';
 
 class NavBar extends Component {
     constructor() {
@@ -12,12 +12,16 @@ class NavBar extends Component {
     }
     render() {
         return (
-            <div className="nav-bar">
-                <nav>
+            <div>
+                <nav className="nav-bar">
+                    <h1> Youtube </h1>
+                    < br />
                     <BrowserRouter>
-                        <Link to="/feed">Feed</Link>
+                        <Link to="/" className = "nav-link">Home</Link> {" "}
+                        <Link to ="/about" className = "nav-link">About</Link> {" "}
                         <Switch>
-                            <Route path="feed" render={SearchFeed} />
+                            <Route path="/" />
+                            <Route path="/about" />
                         </Switch>
                     </BrowserRouter>
                 </nav>

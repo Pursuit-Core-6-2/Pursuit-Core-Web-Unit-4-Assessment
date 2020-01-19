@@ -17,7 +17,6 @@ class SearchFeed extends Component {
         let { inputValue } = this.state;
         try {
             let apiResults = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${inputValue}&key=${apiKey}`).then((res) => { return res.data.items })
-            console.log("axios call worked, here are api results:", apiResults)
             this.setState({
                 ytResults: apiResults
             })
@@ -50,7 +49,7 @@ class SearchFeed extends Component {
         }
         else if (!noSearch && ytResults) {
             let thumbnailArr = ytResults.map((elem) => {
-                return < Thumbnail url={elem.snippet.thumbnails.default.url} key={elem.id.videoId} name={elem.snippet.title} />
+                return < Thumbnail url={elem.snippet.thumbnails.default.url} key={elem.id.videoId} id = {elem.id.videoId} name={elem.snippet.title}/>
             })
             return (
                 <div>
