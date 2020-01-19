@@ -1,6 +1,6 @@
 // Youtube API KEY
 
-const apiKEY = 'AIzaSyA9SV5g5e0XytlkFrlsa2g3eIxp4P6yI0I'
+const apiKey = 'AIzaSyCSwPzCsZbgF7SWcRyyekMu6p-S9yaCDa4'
 
 
-export default apiKEY
+export default apiKey
