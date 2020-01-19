@@ -6,6 +6,8 @@ class Home extends Component {
         super()
         this.state ={
             searchVids: '', 
+            resArr: [],
+            // results: " ",
         }
     }
     
@@ -15,13 +17,19 @@ class Home extends Component {
         })
     }
 
+    handleSubmit = async (e) => {
+        e.preventDefault()
+        const {searchVids} = this.state
+        console.log("searching for:", searchVids)
+    }
+
     
 
 render() {
-    const {searchVids} = this.state
+    const {searchVids, resArr} = this.state
     return (
         <div>
-<form>
+<form onSubmit={this.handleSubmit}>
     <input type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
     <input type="submit"/>
 </form>
