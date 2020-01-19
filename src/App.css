@@ -8,4 +8,12 @@ App MAIN Component Styling | YouTube Abbreviated | Unit 4 Assessment
   display: grid;
   grid-template-columns: 100vw;
   grid-template-rows: 72px auto;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85em;
+}
+
+h1 {
+  font-family: 'Alata', sans-serif;
+  font-size: 1.8em;
 }

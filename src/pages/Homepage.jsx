@@ -15,14 +15,31 @@ import React, { Component } from 'react';
 /* COMPONENT + EXPORT */
 export default class Homepage extends Component {
   state = {
-
+    searchTxt: ""
   }
 
+  handleChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Hit");
+  }
 
   render() {
+    const { searchTxt } = this.state;
+
     return(
       <div>
-        Home
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
+          <button className="btn-search">Search</button>
+        </form>
+        <p>Copy that.</p>
+        
       </div>
     );
   }
