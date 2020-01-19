@@ -18,7 +18,7 @@ class App extends Component {
       this.state = {
         searchEntered: false,
         input:'',
-        results: []
+        resultsArr: []
       }
   }
 
@@ -39,17 +39,27 @@ class App extends Component {
     this.handleSearch()
   }
 
-  handleSearch = () => {
+  handleSearch = async () => {
     let searchQuery = this.state.input
     console.log(searchQuery)
+    const {data:{items}} = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=8&order=relevance&key=${API_KEY}`)
+    console.log(items)
+    this.setState({
+      resultsArr: items
+    })
   }
 
+  handleClick = (event) => {
+    console.log('event inner text', event.target.innerText)
+    console.log('video id', event.target.id)
+    
+  }
 
 
   render(){
     console.log(this.state)
-    const {searchEntered } = this.state
-    const {handleInput, handleSubmit } = this
+    const {searchEntered, resultsArr} = this.state
+    const {handleInput, handleSubmit, handleClick } = this
   return (
     <div className="App">
      <Router>
@@ -76,8 +86,10 @@ class App extends Component {
           <Route path="/">
             <Home 
             searchEntered = {searchEntered}
+            resultsArr= {resultsArr}
             handleInput= {handleInput}
             handleSubmit={handleSubmit}
+            handleClick={handleClick}
             />
           </Route>
           </div>

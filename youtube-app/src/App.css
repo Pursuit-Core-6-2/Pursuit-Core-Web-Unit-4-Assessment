@@ -17,7 +17,7 @@
 }
 
 .App input {
- width: 500px;
+ width: 65%;
  height: 30px;
  border-radius: 5px;
 }
@@ -39,5 +39,29 @@
   width: fit-content;
   padding: 5px;
   border-radius: 5px;
+  margin: 0 auto;
+}
+
+.resultsDiv {
   align-content: center;
+}
+
+.resultsDiv ul {
+  /* width: 65%; */
+  columns: 2;
+  float: left;
+  position: relative;
+  margin-right: 10px;
+  /* margin: 0 auto; */
+}
+
+.resultsDiv p {
+  display: block;
+  color: black;
+  width: 320px;
+}
+
+.resultsDiv img {
+  width: 320px;
+  height: 180px;
 }

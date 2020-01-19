@@ -8,7 +8,7 @@ class Home extends Component {
     }
 
     render(){
-    const {searchEntered, handleInput, handleSubmit} = this.props 
+    const {searchEntered, resultsArr, handleInput, handleSubmit, handleClick} = this.props 
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -17,6 +17,8 @@ class Home extends Component {
             </form>
             <Results 
             searchEntered={searchEntered}
+            resultsArr={resultsArr}
+            handleClick={handleClick}
             />
         </div>
     )
