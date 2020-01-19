@@ -40,11 +40,12 @@ body {
 }
 
 .About-body {
-  background-color: ivory;
+  background-color: #0CD6C9;
   padding: 40px;
   margin-left: 20%;
   margin-right: 20%;
   border-radius: 20px;
+  border: 3px solid green;
 }
 
 .Home-gallery {
@@ -55,6 +56,10 @@ body {
 
 .Home-video-title {
   width: 480px;
+  color: white;
+  font-size: large;
+  margin-top: 2px;
+  margin-bottom: 35px;
 }
 
 .Home-form {
@@ -93,6 +98,7 @@ body {
   background-color: #0000ff;
   color: white;
   height: 25px;
+  margin-bottom: 20px;
 }
 
 .Video-comments {
@@ -101,4 +107,24 @@ body {
   text-align: left;
   margin-left: 25%;
   margin-right: 25%;
+}
+
+.Video-comment {
+  background-color: #0CD6C9;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.Video-comment-name {
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.Video-comment-body {
+  margin: 0px;
+}
+
+.Video-label {
+  margin-bottom: 2px;
 }

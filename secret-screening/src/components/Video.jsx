@@ -62,7 +62,7 @@ class Video extends Component {
                     className="Video-player"
                 />
                 <form onSubmit={this.handleSubmit} className="Video-form">
-                    <p>Name</p>
+                    <p className="Video-label">Name</p>
                     <input
                         type="text"
                         placeholder="Enter your name"
@@ -70,7 +70,7 @@ class Video extends Component {
                         value={userName}
                         className="Video-input"
                     />
-                    <p>Comment</p>
+                    <p className="Video-label">Comment</p>
                     <input
                         type="text"
                         placeholder="Leave a comment..."
@@ -87,8 +87,8 @@ class Video extends Component {
                     comments.map((comment, k) => {
                         return(
                             <div key={k} className="Video-comment">
-                                <h3>{comment.userName}</h3>
-                                <p>{comment.userInput}</p>
+                                <h3 className="Video-comment-name">{comment.userName}</h3>
+                                <p className="Video-comment-body">{comment.userInput}</p>
                             </div>
                         )
                     })
