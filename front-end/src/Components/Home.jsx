@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Search from './Search';
-// import VideoDetail from './VideoDetail';
-// import YouTube from 'react-youtube';
+import VideoDetail from './VideoDetail';
 import VideoList from './VideoList';
 import YoutubeAPI from '../axiosAPI'
 import API_KEY from '../secretKey'
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
     state = {
@@ -40,7 +39,7 @@ class Home extends Component {
         this.setState({
             selectedVideo: video
         })
-        return <Redirect to='/about' />
+        // return <Redirect to='/about' />
     }
 
     render() {
@@ -50,17 +49,19 @@ class Home extends Component {
         return (
             <Grid justify='center' container spacing={10}>
                 <Grid container justify="center" spacing={10} item xs={12}>
-                    {/* <Grid container justify="center" spacing={10}> */}
                         <Grid item xs={10}>
                             <Search onFormSubmit={this.handleSubmit} />
                         </Grid>
                         <Grid item xs={10}>
-                            {/* <VideoDetail video={selectedVideo} /> */}
                             <VideoList video={selectedVideo} videos={videos} onVideoSelect={this.onVideoSelect} />
+                            <VideoDetail video={selectedVideo} />
+
                         </Grid>
-                    {/* </Grid> */}
+
                 </Grid>
+
             </Grid>
+
         );
     }
 }

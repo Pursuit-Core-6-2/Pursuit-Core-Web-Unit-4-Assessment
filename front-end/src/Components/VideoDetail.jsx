@@ -2,7 +2,10 @@ import React from 'react'
 import { Paper, Typography } from "@material-ui/core"
 
 const VideoDetail = ({ video }) => {
+    if (!video) {
 
+        return <div>Showing that I can display a video</div>
+    }
     console.log('Video Info video', video.id.videoId)
 
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
