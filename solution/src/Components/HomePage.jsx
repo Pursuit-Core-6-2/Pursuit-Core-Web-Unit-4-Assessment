@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import apiKey from '../secrets'
 
 class HomePage extends React.Component {
@@ -52,10 +53,10 @@ class HomePage extends React.Component {
             <div>{  
                 searchResults.map(item => {
                     return(
-                        <div>
+                        <Link to= {`/video/${item.id.videoId}`}>
                             <p>{item.snippet.title}</p>
-                            <img src={item.snippet.thumbnails.high.url} />   
-                        </div>
+                            <img src={item.snippet.thumbnails.high.url} /> 
+                        </Link>
                      )
                 })}
             </div> 

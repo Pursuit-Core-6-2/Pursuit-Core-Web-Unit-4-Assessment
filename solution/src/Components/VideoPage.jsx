@@ -4,7 +4,8 @@ class VideoPage extends React.Component {
     constructor(){
         super()
         this.state = {
-
+            
+            videosArray: []
         }
     }
     render(){

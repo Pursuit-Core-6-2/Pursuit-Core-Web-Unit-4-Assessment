@@ -1,6 +1,6 @@
 import React from 'react';
 import HomePage from './Components/HomePage'
-import SearchBar from './Components/HomePage'
+// import SearchBar from './Components/HomePage'
 import VideoPage from './Components/VideoPage'
 import AboutPage from './Components/AboutPage'
 import NavBar from './Components/NavBar'
@@ -17,10 +17,13 @@ class App extends React.Component {
         </div>
         <div>
           <Switch>
-            <Route path='/' component={HomePage}></Route>
+            {/* <Route exact path='/' component={HomePage}></Route> */}
+            <Route path="/"render={() => <HomePage />}/>
             </Switch>
             <Switch>
             <Route path='/about' component={AboutPage}></Route>
+            </Switch>
+            <Switch>
             <Route path='/video' component={VideoPage}></Route>
           </Switch>
         </div>

@@ -1,11 +1,10 @@
 //Search for videos and display results
 
 import React from 'react'
-import SearchBar from './HomePage'
 import axios from 'axios'
 
 
-class HomePage extends React.Component {
+class Video extends React.Component {
     constructor(){
         super()
         this.state = {
