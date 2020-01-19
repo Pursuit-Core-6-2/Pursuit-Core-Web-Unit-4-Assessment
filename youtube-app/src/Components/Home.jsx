@@ -69,7 +69,8 @@ class Home extends Component{
           };
         return(
                 <div>
-                    <h1>Homepage</h1>
+                    <h1>YouTube Search</h1>
+                    <img className="Logo" src="https://cdn.pixabay.com/photo/2016/07/03/18/36/youtube-1495277_1280.png"></img>
                     <form onSubmit={this.handleSubmit}>
                         <input placeholder="Search"onChange={this.handleChange} value={input}></input>
                         <button className="Button" onClick={this.handleClick}>Search</button>

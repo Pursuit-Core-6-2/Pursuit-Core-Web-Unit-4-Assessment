@@ -4,15 +4,22 @@
 }
 
 .Nav {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-bottom: 10px;
   justify-items: space-between;
   text-align:left;
   height: 35px;
   background-color: red;
+
   
 }
 
 .Link {
   color: white;
+  padding-right: 10px;
+
 }
 
 .Title{
@@ -27,3 +34,8 @@ li {
   background-color: red;
   color: white;
 }
+
+.Logo {
+  width: 50px;
+}
+ 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 class About extends Component{
 
@@ -7,6 +8,7 @@ class About extends Component{
                 <div>
                     <h1>About</h1>
                     <p>Welcome to my Youtube App.  Please use this all to search videos</p>
+                    
                 </div>
         )
     }

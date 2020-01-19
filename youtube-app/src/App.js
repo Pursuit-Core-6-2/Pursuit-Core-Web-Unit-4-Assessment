@@ -8,9 +8,8 @@ import About from './Components/About'
 function App() {
   return (
     <div className="App">
-       
       <nav className="Nav">
-       
+        
         <Link className="Link" to="/">Home</Link>
         {" "}
         <Link className="Link" to="/video">Video</Link>
