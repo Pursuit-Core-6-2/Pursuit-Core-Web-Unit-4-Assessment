@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-default {
+  background-color: red;
+  border-color: red;
+}
+.bg-dark {
+  background-color: 
+  red !important;
+}
+.bg-dark button {
+  border: none;
+  color: black;
+  background-color: 
+  white !important;
+}
