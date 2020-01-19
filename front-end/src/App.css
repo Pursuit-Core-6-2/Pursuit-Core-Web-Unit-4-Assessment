@@ -7,7 +7,7 @@
   grid-template-columns: 153px 63px auto;
   align-items: center;
   text-align: start;
-  /* background-color: #FF0000; */
+  background-color: #FF0000;
   padding: 10px;
 }
 
@@ -23,7 +23,7 @@
   height: auto;
 }
 .youtube, .links {
-  /* color: white; */
+  color: white;
   font-family:  Roboto, arial, sans-serif
 }
 
@@ -43,10 +43,8 @@
 }
 
 
-.searchTitleName{
 
-}
-img{
+.searchResults{
   height:200px;
   width:auto;
   padding: 15px;
