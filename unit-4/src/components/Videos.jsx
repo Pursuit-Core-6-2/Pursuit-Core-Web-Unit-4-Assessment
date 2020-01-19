@@ -1,56 +1,69 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import API_KEY from '../secrets'
+import Youtube from 'react-youtube'
 
 
 class Videos extends Component {
-    constructor(){
+    constructor() {
         super()
-            this.state = {
-                videos: null,
-                comments: " ",
-                name: " "
-            }
-}
-
-async componentDidMount (){
-    const { id } = this.props.match.params
-    try{
-        const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${API_KEY}&id=${id}`
-        const res = await axios.get(url)
-        console.log(res.data.items)
-        this.setState({
-            videos:res.data.items
-        })
-    }catch(err){
-        console.log("Error:", err)
+        this.state = {
+            videos: null,
+            comment: " ",
+            name: " "
+        }
     }
-}
 
-handleChange = (e) => {
+    async componentDidMount() {
+        const { videoId } = this.props.match.params
+        console.log("ID", videoId)
+        try {
+            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=${videoId}`
+            const res = await axios.get(url)
+            console.log(res.data.items)
+            this.setState({
+                videos: videoId
+            })
+        } catch (err) {
+            console.log("Error:", err)
+        }
+    }
 
-this.setState({
-    name: e.target.value,
-    comment: e.target.value
-})
-}
+    // handleChange = (e) => {
+    // this.setState({
+    //     name: e.target.value,
+    //     comment: e.target.value
+    // })
+    // }
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+        this.setState({
+            name: e.target.value,
+            comment: e.target.value,
+        })
+
+    }
 
     render() {
-        const { video, name, comments} = this.state;
-        if (!video) {
+        const { videos, name, comments } = this.state;
+        if (!videos) {
             return <p> no videos</p>
+
         }
-        return(
-<div>
-<img src={video.snippet.thumbnails.default.url} alt={video.id.videoId} />
 
-<div>
-<input type="text" placeholder="Enter Name" onChange={this.handleChange} value={name}>Name:</input>
-<input type="text" placeholder="Enter Comment" onChange={this.handleChange} value={comments}>Comment:</input>
-<input type="submit"/>
+        return (
+            <div>
 
-</div>
-</div>
+                <Youtube
+                    videos={videos}
+                />
+
+                <form onSubmit={this.handleFormSubmit}>
+                    <input type="text" placeholder="Enter Name" value={name}>Name:</input>
+                    <input type="text" placeholder="Enter Comment" value={comments}>Comment:</input>
+                    <input type="submit" />
+                </form>
+            </div>
         )
     }
 }

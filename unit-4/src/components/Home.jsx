@@ -26,7 +26,7 @@ class Home extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         const { searchVids } = this.state
-        console.log("searching for:", searchVids)
+        // console.log("searching for:", searchVids)
         try {
             const params = `&key=${API_KEY}&q=${searchVids}`
             const url = `https://www.googleapis.com/youtube/v3/search?part=snippet${params}`
@@ -68,8 +68,11 @@ class Home extends Component {
                 </form>
             
                 {videos.map(video => {
+                        // console.log("videoID", video.id.videoId)
+
                     return (
-                        <Link to={`/videos/${video.snippet.videoId}`} key={video.snippet.videoId}>
+                        <Link to={`/videos/${video.id.videoId}`} key={video.snippet.videoId}>
+
                             <img className="img" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
                             <p> {video.snippet.title}</p>
                         </Link>
