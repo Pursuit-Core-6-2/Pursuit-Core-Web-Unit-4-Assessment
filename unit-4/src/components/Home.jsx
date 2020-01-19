@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom';
 import API_KEY from '../secrets'
+import './CSS/Home.css'
 
 
 class Home extends Component {
@@ -16,7 +17,9 @@ class Home extends Component {
 
     handleChange = (e) => {
         this.setState({
-            searchVids: e.target.value
+            searchVids: e.target.value,
+            search: true,
+            // search:false
         })
     }
 
@@ -25,12 +28,14 @@ class Home extends Component {
         const { searchVids } = this.state
         console.log("searching for:", searchVids)
         try {
-            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=${API_KEY}&search=${searchVids}`
+            const params = `&key=${API_KEY}&search=${searchVids}`
+            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet${params}`
             let res = await Axios.get(url)
             console.log(res.data.items)
             this.setState({
                 videos: res.data.items,
-                search: false
+                search: false,
+                searchVids: " "
             })
         } catch (err) {
             console.log("error:", err)
@@ -45,20 +50,27 @@ class Home extends Component {
             return (
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
-                        <input type="submit" />
+                        <input className="inputBox" type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
+                        <input className="search" type="submit" value="Search"/>
                     </form>
 
-                    <p> No Search Results Found! Please Sumbit a Search above!  </p>
+                    <p className="noSearchPara">  No Search Results Found! Please Sumbit a Search above!  </p>
                 </div>
             )
-        } else {
+            
+     }else {
             return (
-            <div>{
-                videos.map(video => {
+                <div className="vidList">
+                <form onSubmit={this.handleSubmit}>
+                    <input className="inputBox" type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
+                    <input className="search" type="submit"  value="Search"/>
+
+                </form>
+            
+                {videos.map(video => {
                     return (
-                        <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
-                            <img src={video.snippet.thumbnails.default.url} alt={video.id.videoId} />
+                        <Link to={`/videos/${video.snippet.videoId}`} key={video.id.videoId}>
+                            <img className="img" src={video.snippet.thumbnails.default.url} alt={video.id.videoId} />
                             <p> {video.snippet.title}</p>
                         </Link>
 
