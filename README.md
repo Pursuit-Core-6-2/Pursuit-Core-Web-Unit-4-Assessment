@@ -55,7 +55,7 @@ For this Assessment you will be building a simple YouTube client application. Yo
 
 ### Homepage `/`
 
-<img src='.readme/home-1.png' width='400'>
+<img src='./readme/home-1.png' width='400'>
 
 - Shows a Search form with:
   - a search input Field
@@ -65,7 +65,7 @@ For this Assessment you will be building a simple YouTube client application. Yo
 
 #### Search Results
 
-<img src='.readme/home-2.png' width='400'>
+<img src='./readme/home-2.png' width='400'>
 
 - Once a user submits a search your app should replace the original `No search results` message with the results
 - The results **MUST** me ordered in columns with **TWO** results per row
@@ -77,7 +77,7 @@ For this Assessment you will be building a simple YouTube client application. Yo
 
 ### Video Page: `/video/:id`
 
-<img src='.readme/video.png' width='400'>
+<img src='./readme/video.png' width='400'>
 
 - User should be able to access this page by any link to the specific video id
 - Shows the YouTube player to show that specific YouTube video. Use `react-youtube` for this.
