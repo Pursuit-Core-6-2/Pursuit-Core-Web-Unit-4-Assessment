@@ -10,7 +10,7 @@ class Home extends React.Component {
         this.state = {
             search: "",
             pics: {},
-            message: ""
+            message: "No search results yet! Please submit a search above."
         }
     }
 
@@ -35,7 +35,8 @@ class Home extends React.Component {
                 thumbnailObj[video.snippet.title] = {url: video.snippet.thumbnails.medium.url, id:video.id.videoId};             
             })
             this.setState({
-                pics: thumbnailObj
+                pics: thumbnailObj,
+                message: ""
             })
             
 
@@ -54,8 +55,9 @@ class Home extends React.Component {
                 <h3>YouTube</h3>
                 <form onSubmit={this.handleFormSubmit}>
                     <input id="searchInput" type = "text" onChange={this.handleSearchChange} placeholder="Look for videos"></input>
-                    <button type="submit">Search</button>
+                    <button id="searchButton" type="submit">Search</button>
                 </form> 
+                <p>{this.state.message}</p>
                 <div id="displayedThumbs">
                     <Thumbnails pics={this.state.pics} />    
                 </div>      
