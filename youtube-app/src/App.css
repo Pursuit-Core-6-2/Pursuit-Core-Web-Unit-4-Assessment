@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+
+}
+
+.Nav {
+  justify-items: space-between;
+  text-align:left;
+  height: 35px;
+  background-color: red;
+  
+}
+
+.Link {
+  color: white;
+}
+
+.Title{
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+.Button{
+  background-color: red;
+  color: white;
+}
