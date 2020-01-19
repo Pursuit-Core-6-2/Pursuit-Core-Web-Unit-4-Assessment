@@ -5,25 +5,29 @@ NavBar Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+    // external
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 // import axios from 'axios';
 
-// import './NavBar.css';
+    // local
+import './NavBar.css';
+
+import Logo from './Logo';
 
 
-/* COMPONENT + EXPORT */
-export default class NavBar extends Component {
-  state = {
+/* COMPONENT */
+const NavBar = () => {
 
-  }
-
-
-  render() {
-    return(
-      <div>
-        NavBar
-      </div>
-    );
-  }
+  return(
+    <ul className="nav-bar">
+      <Logo />
+      <NavLink className='nav-link' to={`/`}>Home</NavLink>
+      <NavLink className='nav-link' to={`/about`}>About</NavLink>
+    </ul>
+  );
 }
+
+
+/* EXPORT */
+export default NavBar;

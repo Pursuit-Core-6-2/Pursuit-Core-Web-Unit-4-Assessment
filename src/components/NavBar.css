@@ -1,0 +1,20 @@
+/*
+JOSEPH P. PASAOA
+NavBar Component Styling | YouTube Abbreviated | Unit 4 Assessment
+*/
+
+
+ul.nav-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-color: #000;
+}
+
+.nav-link {
+  margin-left: 0px;
+  margin-right: 22px;
+}
