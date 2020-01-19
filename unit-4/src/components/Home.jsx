@@ -28,7 +28,7 @@ class Home extends Component {
         const { searchVids } = this.state
         console.log("searching for:", searchVids)
         try {
-            const params = `&key=${API_KEY}&search=${searchVids}`
+            const params = `&key=${API_KEY}&q=${searchVids}`
             const url = `https://www.googleapis.com/youtube/v3/search?part=snippet${params}`
             let res = await Axios.get(url)
             console.log(res.data.items)
@@ -69,8 +69,8 @@ class Home extends Component {
             
                 {videos.map(video => {
                     return (
-                        <Link to={`/videos/${video.snippet.videoId}`} key={video.id.videoId}>
-                            <img className="img" src={video.snippet.thumbnails.default.url} alt={video.id.videoId} />
+                        <Link to={`/videos/${video.snippet.videoId}`} key={video.snippet.videoId}>
+                            <img className="img" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
                             <p> {video.snippet.title}</p>
                         </Link>
 
