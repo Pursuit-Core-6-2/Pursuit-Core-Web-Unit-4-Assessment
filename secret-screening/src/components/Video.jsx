@@ -14,7 +14,6 @@ class Video extends Component {
 
     async componentDidMount() {
         const { id } = this.props.match.params
-        console.log("id from params", id)
         this.setState({
             video: id
         })

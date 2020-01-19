@@ -29,7 +29,7 @@ class Home extends Component {
                 videos: res.data.items
             })
         } catch (error) {
-            console.log("Oops! All Errors!", error)
+
         }
     }
 
