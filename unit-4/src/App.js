@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/Navbar'
-// import Home from './components/Home'
+import Home from './components/Home'
 // import About from './components/About';
 
 function App() {
