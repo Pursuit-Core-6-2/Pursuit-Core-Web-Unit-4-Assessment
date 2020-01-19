@@ -13,7 +13,6 @@ class Home extends React.Component {
         this.state = {
             search: "",
             searchResults: []
-
         }
     }
 
@@ -39,13 +38,6 @@ class Home extends React.Component {
             this.setState({
                 searchResults: response.data.items
             })
-
-            console.log(response.data.items)
-            // console.log(response.data.items[0].snippet.description)
-            // console.log(response.data.items[0].snippet)
-            // console.log(response.data.items[0].snippet.thumbnails)
-            // console.log(response.data.items[0].snippet.thumbnails.default.url)
-
         } catch (error) {
             console.log(error)
         }
@@ -53,22 +45,20 @@ class Home extends React.Component {
 
     render() {
 
-      
-        console.log(this.state)
+
+        const { search, searchResults } = this.state
         return (
             <div className="Home">
                 <form onSubmit={this.handleSubmit}>
                     <input className="searchInput" type="text" placeholder="Search video" onChange={this.handleSearch} value={search} />
-                    <input className = "submitButton"type="submit" value="search"/>
+                    <input className="submitButton" type="submit" value="search" />
                 </form>
                 <div className="videoListing">{
                     searchResults.map(result => {
                         return (
-                            <Link to={`/video/${result.id.videoId}`} id={result.id.videoId}><img className= "searchResults" src={result.snippet.thumbnails.high.url} />
-                                <h3 className= "searchTitleName">{result.snippet.title}</h3>
+                            <Link to={`/video/${result.id.videoId}`} id={result.id.videoId}><img className="searchResults" src={result.snippet.thumbnails.high.url} />
+                                <h3 className="searchTitleName">{result.snippet.title}</h3>
                                 <p>{result.id.videoId}</p>
-                                
-                           
                             </Link>
 
                         )
