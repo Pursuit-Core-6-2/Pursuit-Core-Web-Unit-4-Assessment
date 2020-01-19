@@ -6,11 +6,9 @@ Videopage Component | YouTube Abbreviated | Unit 4 Assessment
 
 /* IMPORTS */
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import YouTube from 'react-youtube';
-// import axios from 'axios';
 
-// import './Videopage.css';
+import './Videopage.css';
 
 import CommentCard from '../components/CommentCard';
 

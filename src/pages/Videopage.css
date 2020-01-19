@@ -1,0 +1,27 @@
+/*
+JOSEPH P. PASAOA
+Videopage Component Styling | YouTube Abbreviated | Unit 4 Assessment
+*/
+
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ytvideo-box {
+  margin: 22px auto;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 3px 6px;
+}
+
+input[type="text"] {
+  width: 400px;
+}
