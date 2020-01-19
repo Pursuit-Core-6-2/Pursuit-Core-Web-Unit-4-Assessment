@@ -49,16 +49,14 @@ export default class Homepage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { pass, payload } = processInput(this.state.searchTxt, "searchTxt");
+    const { pass, payload } = processInput(this.state.searchTxt, "search terms");
     if (!pass) {
       this.setState({
           errorMessage: payload
       });
     } else {
-      console.log("Hit");
       this.getSearchResults(payload);
     }
-    
   }
 
 
@@ -117,7 +115,7 @@ export default class Homepage extends Component {
 
     return(
       <div className="stage">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form-homesearch">
           <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
           <button className="btn-search">Search</button>
         </form>

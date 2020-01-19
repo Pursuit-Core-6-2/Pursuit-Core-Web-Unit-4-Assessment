@@ -9,20 +9,20 @@ const processInput = (input, descriptionString) => {
     pass: false,
     payload: ""
   };
-  switch (descriptionString) {
-    case "searchTxt":
-      console.log(input);
+  // switch (descriptionString) {
+  //   case "searchTxt":
       if (!input || !input.trim()) {
-        output.payload = "Invalid search. Please re-enter your query and try again.";
+        output.payload = `Invalid ${descriptionString}. Please re-enter your query and try again.`;
       } else {
         output.pass = true;
         output.payload = input.trim();
       }
-    break;
-    default :
-      console.log("You're not supposed to be here.");
-    break;
-  }
+  //   break;
+  //   default :
+  //     console.log("You're not supposed to be here.");
+  //   break;
+  // }
+
   return output;
 }
 
