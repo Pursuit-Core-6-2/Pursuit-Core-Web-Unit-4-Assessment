@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# YouTube API Key
+secrets.js
+
 # testing
 /coverage
 
