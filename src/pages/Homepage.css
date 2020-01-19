@@ -8,11 +8,6 @@ Homepage Page Component Styling | YouTube Abbreviated | Unit 4 Assessment
   grid-column: span 2;
 }
 
-.msg-error {
-  color: red;
-  font-weight: bold;
-}
-
 .results-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -60,11 +60,16 @@ export default class Videopage extends Component {
         name: namePayload,
         comment: cmtPayload
       }
+      this.refs.input.blur();
       this.setState((state, props) => {
-          return { comments: [
-            newCommentObj,
-            ...state.comments
-          ]
+          return { 
+            nameTxt: "",
+            commentTxt: "",
+            errorMessage: "",
+            comments: [
+              newCommentObj,
+              ...state.comments
+            ]
         }
       });
     }
@@ -73,7 +78,7 @@ export default class Videopage extends Component {
 
   render() {
     const videoId = this.props.match.params.id;
-    const { nameTxt, commentTxt, comments } = this.state;
+    const { nameTxt, commentTxt, errorMessage, comments } = this.state;
 
     const opts = {
       origin: window.location.origin 
@@ -105,13 +110,31 @@ export default class Videopage extends Component {
 
         <form className="form-comments" onSubmit={this.handleSubmit}>
           <label htmlFor="nameTxt">Name</label>
-          <input type="text" name="nameTxt" id="nameTxt" className="input-name" value={nameTxt} onChange={this.handleChange} />
+          <input 
+            type="text" 
+            name="nameTxt" 
+            id="nameTxt" 
+            className="input-name" 
+            ref="input" 
+            value={nameTxt} 
+            onChange={this.handleChange} 
+          />
 
           <label htmlFor="commentTxt">Comment</label>
-          <input type="text" name="commentTxt" id="commentTxt" className="input-comment" value={commentTxt} onChange={this.handleChange} />
+          <input 
+            type="text" 
+            name="commentTxt" 
+            id="commentTxt" 
+            className="input-comment" 
+            ref="input" 
+            value={commentTxt} 
+            onChange={this.handleChange} 
+          />
 
           <button className="btn-search">Search</button>
         </form>
+
+        <div className="msg-error">{errorMessage}</div>
 
         <div className="display-comments">
           {listComments}

@@ -17,3 +17,8 @@ h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 1.3em;
 }
+
+.msg-error {
+  color: red;
+  font-weight: bold;
+}
