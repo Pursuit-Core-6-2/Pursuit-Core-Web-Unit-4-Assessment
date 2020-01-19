@@ -6,11 +6,11 @@ import { getVideoDetails } from '../helperFunctions/apiCalls'
 const Home = (props) => {
     const openVideo = async (id) => {
         const data = await getVideoDetails(id)
-        console.log(data)
+        // console.log(data)
         props.changeVidDetails(data.data)
         props.history.push(`/videos/${id}`)
     }
-    console.log(props)
+    // console.log(props)
     return (
         <div>
             <Input

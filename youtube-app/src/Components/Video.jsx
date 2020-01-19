@@ -4,7 +4,7 @@ import { Input, Button } from 'semantic-ui-react'
 import { getVideoDetails } from '../helperFunctions/apiCalls'
 
 const Video = (props) => {
-    console.log(props)
+    // console.log(props)
     const [name, setName] = useState('')
     const [comment, setComment] = useState('')
     const [state, setState] = useState([{ name: 'test', com: 'Hello World!' }])
