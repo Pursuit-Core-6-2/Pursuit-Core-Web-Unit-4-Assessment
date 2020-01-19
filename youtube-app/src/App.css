@@ -37,6 +37,7 @@
 .VideoDetails:hover {
   box-shadow: 0 0 5px 1px rgb(210, 208, 211);
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .VideoDetails > h4 {
