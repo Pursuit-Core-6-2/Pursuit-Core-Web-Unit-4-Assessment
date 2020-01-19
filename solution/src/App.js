@@ -8,7 +8,7 @@ import NavBar from './Components/NavBar'
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
 
-app.use(cors)
+// app.use(cors)
 
 class App extends React.Component {
 
