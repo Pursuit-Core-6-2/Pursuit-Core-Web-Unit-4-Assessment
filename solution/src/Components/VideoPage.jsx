@@ -9,16 +9,15 @@ class VideoPage extends React.Component {
         this.state = {
             nameVal:'',
             commentVal:'',
+            videoId: this.props.videoId,
+            commentArray:[]
         }
     }
 
-    //  handleSubmitForm(e){
-    //     e.preventDefault()
-    //     this.setState({
-    //         name: e.target.name.value,
-    //         comment: e.target.comment.value
-    //     })
-    //  }
+     handleSubmitForm(e){
+        e.preventDefault()
+       
+     }
     handleName = (e) => {
         console.log(e.target.value)
         this.setState ({
@@ -42,6 +41,7 @@ class VideoPage extends React.Component {
             const key = apiKey
             const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${key}`
             const data = await axios.get(url)
+            // const data2 = await axios.get(url2)
             console.log(data)
         }catch(error){
             console.log('err',error)
@@ -53,8 +53,7 @@ class VideoPage extends React.Component {
         return(
             <>
             <Youtube
-                videoId = {id}
-                id= 'FBZ'
+                videoId = {this.props.videoId}
                 onReady = {this.onReady}
             />
             <div>
@@ -72,6 +71,9 @@ class VideoPage extends React.Component {
                     <input type='submit'></input>
                 </form>
             </div>
+                <ul>
+                    
+                </ul>
             </>
         )
     }    

@@ -10,7 +10,6 @@ class HomePage extends React.Component {
             searchValue: '',
             message: 'No results. Enter a search term query',
             searchResults: [],
-            videoId: ''
         }
     }
 
@@ -31,7 +30,8 @@ class HomePage extends React.Component {
             const items = data.data.items
             console.log(items)
             this.setState({
-                searchResults: items
+                searchResults: items,
+                // videoId: items.id.videoId
             })
         }catch(error){
             console.log('err', error)
