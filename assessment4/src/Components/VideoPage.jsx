@@ -1,5 +1,7 @@
 import React from 'react';
-import react  from 'react-youtube'
+// import react  from 'react-youtube'
+import axios from 'axios'
+import APIKey from '../Secrets'
 
 class VideoPage extends React.Component {
     constructor() {
@@ -20,17 +22,29 @@ class VideoPage extends React.Component {
     }
 
 
-    handleForm = () => {
+    handleForm = (e) => {
+        e.preventDefault()
 
     }
+
+    async componentDidMount() {
+        try {
+            let url = `https://www.googleapis.com/youtube/v3/videos/${}`
+            let videos = await axios.get
+
+        } catch (error){
+            console.log('error', error)
+        }
+    }
+
 
     render() {
         return(
             <div>
                 <form> 
-                    <input type='text'/>
+                    <input type='text' placeholder='name'/>
                     <br></br>
-                    <input type='text'/>
+                    <input type='text' placeholder='comments...'/>
                     <br></br>
                     <input type='submit'/>
 

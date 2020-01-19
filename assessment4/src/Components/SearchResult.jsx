@@ -14,15 +14,15 @@ class SearchResults extends React.Component {
     
 
     render() {
-        // const  {results} = this.props
+        const  {results} = this.props
         console.log('check', )
         return(
             <div>
                 <div>
-                     {  this.props.results.map(result => {
-                  
+                     {  this.props.results.map((result, index)  => {
+                        console.log("result", result )
                         return(
-                            <img src={result.snippet.title}></img>
+                            <img src={results} key={index}></img>
                         )
                     })}
                 </div>

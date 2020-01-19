@@ -4,8 +4,8 @@ import SearchResults from './SearchResult'
 import axios from 'axios'
 
 class HomePage extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             results:[],
            snippet: 'snippet',
@@ -23,18 +23,20 @@ class HomePage extends React.Component {
         })
     }
 
-    handleFormSubmit = async (e) => {
+    handleFormSubmit = async (e, index) => {
         // const {list} = this.props
         e.preventDefault()
+        // const {index} = this.props
         const { search, snippet } = this.state
         console.log('form submitted', snippet)
 
-        let params = `?part=${snippet}&key=${APIKey}&p=${search}`
+        let params = `?part=${snippet}&key=${APIKey}&q=${search}`
         try {
             let searchUrl = `https://www.googleapis.com/youtube/v3/search/${params}`
             let response = await axios.get(searchUrl)
-            console.log('response', response.data.items)
+            // for (let i = 0; i < )
             
+            console.log('response', response.data.items[index])
             const data  = response.data.items
             
             // console.log('data', data)
@@ -59,6 +61,7 @@ class HomePage extends React.Component {
                     <button>Search</button>
                     <p>No Search Results Yet. Search for videos here!</p>
 
+                       
                     <SearchResults
                         results={results}
                     />  

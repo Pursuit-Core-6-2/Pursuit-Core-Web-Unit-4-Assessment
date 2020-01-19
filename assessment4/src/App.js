@@ -29,16 +29,18 @@ class App extends React.Component {
     return (
       <div className="App">
       
-        <nav>
+        <nav className='navbar'>
           <Link to="/">Home</Link> {" "}
           <Link to="/video">Video</Link> {" "}
           <Link to="/about">About</Link>  {" "}
+          <Link to='/youtube'>Youtube</Link>
         </nav>
 
         <Switch>
           <Route exact path= "/" component={HomePage}/>
           <Route path="/video" component={VideoPage}/>
           <Route path="/about" component={AboutPage}/>
+          <Route></Route>
            
         </Switch>
 
