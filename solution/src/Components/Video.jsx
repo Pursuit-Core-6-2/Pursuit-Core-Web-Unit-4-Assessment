@@ -30,7 +30,6 @@ class Video extends Component {
     handleComment = (e) => {
         e.preventDefault();
         const { name, comment } = this.state;
-        console.log(name, comment)
         return (
             <p> {name} : {comment}</p>
         )
@@ -60,3 +59,5 @@ class Video extends Component {
     }
 }
 export default Video;
+
+// this component is missing the final post which will append the input values within the form and post a comment to the beginning of a paragraph or list item

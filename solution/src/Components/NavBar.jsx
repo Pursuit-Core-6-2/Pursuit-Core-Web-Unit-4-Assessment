@@ -3,11 +3,12 @@ import { Link, Route, Switch } from 'react-router-dom';
 import About from './About';
 import SearchFeed from './SearchFeed';
 import Video from './Video'
+import './nav.css'
 
 class NavBar extends Component {
     render() {
         return (
-            <>
+            <div>
             <nav className="nav-bar">
                 <h1 className="nav-title">Youtube</h1>
                 <Link to="/" >Home</Link> {" "}
@@ -20,7 +21,7 @@ class NavBar extends Component {
                     <Route path="/video/:videoId" component={Video} />
                 </Switch>
             </div>
-            </>
+            </div>
         )
     }
 }

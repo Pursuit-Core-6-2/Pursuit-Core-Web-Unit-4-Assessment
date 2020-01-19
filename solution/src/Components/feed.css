@@ -1,0 +1,18 @@
+.thumbnail-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 15px;
+    justify-content: space-evenly;
+    align-content: center;
+  };
+  .thumbnail-component {
+    align-content: center;
+  };
+  .thumbnail-component > img {
+    height: 120px;
+    width: auto;
+  };
+  .video-title {
+    font-size: 15px;
+    width: 200px;
+  };

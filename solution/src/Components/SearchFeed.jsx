@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Thumbnail from './Thumbnails'
 import axios from 'axios';
 import apiKey from '../secrets.js'
+import './feed.css'
 
 class SearchFeed extends Component {
     constructor() {

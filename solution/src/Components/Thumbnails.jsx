@@ -14,20 +14,20 @@ class Thumbnail extends Component {
             display: false
         }
     }
-    handleThumbnailClick = async (e) => {
+    handleThumbnailClick = async () => {
         let { id } = this.state;
-        let videoCall = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${apiKey}`)
+        let videoCall = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${apiKey}`);
         console.log(videoCall.data);
         this.setState({
             display: true
         })
     };
     render() {
-        const { url, key, name, id, display} = this.state;
+        const { url, key, name, id, display } = this.state;
         if(display) {
             return(
                 <div>
-                    < Video videoId={id}/>
+                    <Video videoId={id}/>
                 </div>
             )
         } 
@@ -43,3 +43,5 @@ class Thumbnail extends Component {
     }
 };
 export default Thumbnail;
+
+//handleThumbnailClick is here returning the Video component onClick, however, it does not replace the component entirely but appends it to the page. Another route could be created with the video id as a parameter and when a thumbnail is clicked, could re-route the page to display the soley the video component.
