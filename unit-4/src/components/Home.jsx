@@ -9,8 +9,8 @@ class Home extends Component {
         super()
         this.state = {
             searchVids: '',
-            videos: []
-            // results: " ",
+            videos: [],
+            search: true,
         }
     }
 
@@ -29,7 +29,8 @@ class Home extends Component {
             let res = await Axios.get(url)
             console.log(res.data.items)
             this.setState({
-                videos: res.data.items
+                videos: res.data.items,
+                search: false
             })
         } catch (err) {
             console.log("error:", err)
@@ -39,28 +40,35 @@ class Home extends Component {
 
 
     render() {
-        const { searchVids, videos } = this.state
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
-                    <input type="submit" />
-                </form>
+        const { searchVids, videos, search } = this.state
+        if (search) {
+            return (
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
+                        <input type="submit" />
+                    </form>
 
+                    <p> No Search Results Found! Please Sumbit a Search above!  </p>
+                </div>
+            )
+        } else {
+            return (
             <div>{
                 videos.map(video => {
                     return (
-                        <Link to={`/videos/${video.id.videoId}`}>
-                            <img src={video.id.videoId} />
+                        <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
+                            <img src={video.snippet.thumbnails.default.url} alt={video.id.videoId} />
                             <p> {video.snippet.title}</p>
                         </Link>
+
                     )
                 })
             }</div >
-            </div>
-
-    )
+            )
+        }
     }
 }
+
 
 export default Home;
