@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Browser, Switch, } from 'react-router-dom';
+import Home from './Home'
+import About from './About'
 
 const Nav = () => {
    return  (
       <nav>
-         <span className="bar"></span>{" "}
-         <Link to='/about'>About</Link>{" "}
-         <Link to='/home'>Home</Link>{" "}
+         <Link to='/about'>About</Link>
+         <Link to='/'>Home</Link>
       </nav>
    )
 }

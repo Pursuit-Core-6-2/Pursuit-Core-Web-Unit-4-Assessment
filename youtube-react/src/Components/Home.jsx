@@ -1,6 +1,7 @@
-import React, { isValidElement } from 'react';
+import React from 'react';
 import API_KEY from '../secrets';
 import axios from 'axios';
+import Image from './Image'
 
 
 
@@ -9,8 +10,8 @@ class Home extends React.Component{
       super()
       this.state = {
          field:" ",
-         images:{},
-         para:"fgr"
+         images: {},
+         para:'No Search Results. Search for videos above!'
       }
    }
    handleSearch = async (event) => {
@@ -28,13 +29,14 @@ class Home extends React.Component{
          const params = `${searchField}&key=${API_KEY}`
          const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${params}`)
          let videos = response.data.items 
+         // eslint-disable-next-line array-callback-return
          videos.map((video) => {
             vidImg[video.snippet.title] ={url: video.snippet.thumbnails.medium.url, id: video.id.videoId};
+         })
             this.setState({
                images: vidImg,
-               para:'No Search Results. Search for videos above!'
+               para:" "
             })
-         })
       }catch (err) {
          console.log(err)
       }
@@ -49,9 +51,9 @@ render () {
           <input type="submit" value="search"></input>
       </form>
       <p>{this.state.para}</p>
-      {/* <div id="thumbnails">
-         <Images pics={this.state.images}/>
-      </div> */}
+       <div id="thumbnails">
+         <Image images={this.state.images}/>
+      </div> 
    </div>
    ) 
 }
