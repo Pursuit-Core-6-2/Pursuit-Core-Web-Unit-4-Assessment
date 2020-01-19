@@ -35,6 +35,7 @@ class Videos extends Component {
     //     comment: e.target.value
     // })
     // }
+
     handleFormSubmit = (e) => {
         e.preventDefault()
         this.setState({
@@ -46,16 +47,21 @@ class Videos extends Component {
 
     render() {
         const { videos, name, comments } = this.state;
+        // const opts = {
+        //     height: '390',
+        //     width: '640',  
+        // }
+
         if (!videos) {
             return <p> no videos</p>
-
         }
-
+        console.log("videoId", videos)
+       
         return (
             <div>
-
                 <Youtube
                     videos={videos}
+                    // opts ={opts}
                 />
 
                 <form onSubmit={this.handleFormSubmit}>
