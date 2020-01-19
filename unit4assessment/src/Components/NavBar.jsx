@@ -9,7 +9,7 @@ import About from "./About";
 const NavBar = () => {
     return (
         <nav>
-            <p>YouTube</p>
+            <strong><p>YouTube</p></strong>
             <Link to="/" >Home</Link>
             <Link to="/about" >About</Link>
         </nav>

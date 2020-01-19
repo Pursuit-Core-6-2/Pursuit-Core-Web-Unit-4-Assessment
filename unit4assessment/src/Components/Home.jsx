@@ -9,7 +9,8 @@ class Home extends React.Component {
         super()
         this.state = {
             search: "",
-            pics: {}
+            pics: {},
+            message: ""
         }
     }
 
@@ -31,7 +32,7 @@ class Home extends React.Component {
             videos.map((video) => {
                 console.log(video.snippet.thumbnails.default.url)
                 // thumbnailArr.push(video.snippet.thumbnails.default.url)
-                thumbnailObj[video.snippet.title] = {url: video.snippet.thumbnails.default.url, id:video.id.videoId};             
+                thumbnailObj[video.snippet.title] = {url: video.snippet.thumbnails.medium.url, id:video.id.videoId};             
             })
             this.setState({
                 pics: thumbnailObj
@@ -50,11 +51,14 @@ class Home extends React.Component {
     render() {
         return (
             <div>
+                <h3>YouTube</h3>
                 <form onSubmit={this.handleFormSubmit}>
-                    <input type = "text" onChange={this.handleSearchChange}></input>
+                    <input id="searchInput" type = "text" onChange={this.handleSearchChange} placeholder="Look for videos"></input>
                     <button type="submit">Search</button>
                 </form> 
-                <Thumbnails pics={this.state.pics} />          
+                <div id="displayedThumbs">
+                    <Thumbnails pics={this.state.pics} />    
+                </div>      
             </div>
         )
     }

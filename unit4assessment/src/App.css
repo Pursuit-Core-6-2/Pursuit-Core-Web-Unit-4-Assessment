@@ -3,11 +3,90 @@
 }
 
 nav {
+  right: 80%;
   background-color: red;
   margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: white;
+}
+
+
+
+nav > a {
+  color: white;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-decoration: none;
 }
 
 html, body {
   height: 100%;
   margin: 0px;
+}
+
+#displayedThumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#searchInput {
+  width: 500px;
+  height: 25px;
+  font-size: 95%;
+}
+
+#videoCommentForm {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  margin: auto;
+}
+
+#videoCommentForm > input {
+  height: 25px;
+  font-size: 95%;
+}
+
+#videoCommentForm > button {
+  width: 320px;
+  margin: auto;
+  height:20px;
+  background-color: black;
+  color:white;
+  border-radius: 15%;
+}
+
+#commentSection {
+  width: 640px;
+  margin:auto;
+}
+
+#commentSection > div > h3 {
+  text-align: left;
+  margin-bottom: 1%;
+}
+#commentSection > div > p {
+  text-align: left;
+  margin-left: 5%;
+  margin-top: 0%;
+}
+
+hr{
+  color: gray;
+
+}
+
+label {
+  text-align: left
+}
+
+#aboutImg {
+  width: 640px;
+}
+
+#aboutP {
+  width: 640px;
+  margin: auto;
 }

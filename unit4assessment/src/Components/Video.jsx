@@ -44,22 +44,29 @@ class Video extends React.Component {
         return (
             <div>
                 <YouTube videoId={id}/>
-                <form onSubmit={this.handleCommentSubmit}>
-                    <input type="text" placeholder="Name..." required onChange={this.handleName}></input>
-                    <input type="text" placeholder="Comment..." required onChange={this.handleCom}></input>
+                <form id="videoCommentForm" onSubmit={this.handleCommentSubmit}>
+                    <label for="name">Name:</label>
+                        <input type="text" placeholder="Name..." required onChange={this.handleName}></input>
+                        <hr></hr>
+                    <label for="comment">Comment:</label>
+                        <input type="text" placeholder="Comment..." required onChange={this.handleCom}></input>
+                        <hr></hr>
                     <button type="submit">Submit</button>
                 </form>
-                {this.state.commentsArr.map((comment) => {
-                    for(let i in comment) {
-                        return(
-                            <div>
-                                <h6>{i}</h6>
-                                <p>{comment[i]}</p>
-                            </div>
-                        )
-                    }
-                    
-                })}
+                <div id="commentSection">
+                    {this.state.commentsArr.map((comment) => {
+                        for(let i in comment) {
+                            return(
+                                <div>
+                                    <h3>{i}</h3>
+                                    <p>{comment[i]}</p>
+                                    <hr></hr>
+                                </div>
+                            )
+                        }
+                        
+                    })}
+                </div>
             </div>
         )
     }
