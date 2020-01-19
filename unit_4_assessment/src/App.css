@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+#youtubeVideosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.youtubeVideoDivs {
+  width: 50%;
+}
