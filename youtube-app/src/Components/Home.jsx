@@ -6,7 +6,7 @@ const Home = (props) => {
     if (!selectedVid) {
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className="homeForm" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Search..." onChange={handleInput}/>
                 <button>Search</button>
             </form>
