@@ -5,17 +5,29 @@ Homepage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
+    // external
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+// import { Switch, Route } from 'react-router-dom';
 // import axios from 'axios';
 
+    // local
+const {
+  processInput
+} = require('../helpers/globalHelp.jsx');
 // import './Homepage.css';
+
 
 
 /* COMPONENT + EXPORT */
 export default class Homepage extends Component {
   state = {
-    searchTxt: ""
+    searchTxt: "",
+    results: [],
+    isBeginning: true
+  }
+  hardData ={
+    msgWelcome: <p>Search for videos above!</p>,
+    msgEmpty: <p>Sorry, no search results found. Try your search again above.</p>
   }
 
   handleChange = (e) => {
@@ -26,11 +38,24 @@ export default class Homepage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hit");
+    processInput(this.state.searchTxt, "HIT");
   }
 
   render() {
-    const { searchTxt } = this.state;
+    const { searchTxt, results, isBeginning } = this.state;
+    const { msgWelcome, msgEmpty } = this.hardData;
+
+    let listResults = null;
+
+
+    let showing = null;
+    if (isBeginning) {
+      showing = msgWelcome;
+    } else if (!results.length) {
+      showing = msgEmpty;
+    } else {
+      showing = listResults;
+    }
 
     return(
       <div>
@@ -38,8 +63,9 @@ export default class Homepage extends Component {
           <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
           <button className="btn-search">Search</button>
         </form>
-        <p>Copy that.</p>
-        
+
+        {showing}
+
       </div>
     );
   }
