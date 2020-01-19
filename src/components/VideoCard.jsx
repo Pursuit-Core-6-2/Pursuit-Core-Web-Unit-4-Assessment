@@ -16,9 +16,6 @@ import './VideoCard.css';
 /* COMPONENT */
 const VideoCard = (props) => {
   const { videoId, title, desc, thumbUrl } = props;
-  const opts = {
-    origin: window.location.origin 
-  }
 
   return (
     <Link to={`/video/${videoId}`}>
