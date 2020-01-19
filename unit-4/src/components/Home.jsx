@@ -15,6 +15,8 @@ class Home extends Component {
         })
     }
 
+    
+
 render() {
     const {searchVids} = this.state
     return (
