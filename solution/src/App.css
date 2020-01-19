@@ -44,10 +44,10 @@
     flex-flow: row;
     flex-wrap: wrap;
     align-content: center;
-    align-items: center
+    align-items: center;
 };
 .nav-link {
-  float: left;
+  float: right;
 };
 .nav-title {
   color: white;
@@ -70,3 +70,6 @@
   font-size: 15px;
   width: 200px;
 };
+.about {
+  width: 40%
+}

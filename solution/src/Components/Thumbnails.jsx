@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Video from './Video.jsx'
-import Axios from 'axios';
+import axios from 'axios';
 import apiKey from '../secrets.js';
 
 class Thumbnail extends Component {
@@ -16,7 +16,7 @@ class Thumbnail extends Component {
     }
     handleThumbnailClick = async (e) => {
         let { id } = this.state;
-        let videoCall = await Axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${apiKey}`)
+        let videoCall = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${apiKey}`)
         console.log(videoCall.data);
         this.setState({
             display: true

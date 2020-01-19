@@ -11,13 +11,7 @@ class Video extends Component {
         }
     }
     handleOnReady = (e) => {
-        e.target.pauseVideo();
-    }
-    handleComment = (e) => {
-        e.preventDefault();
-        console.log("Comment submitted");
-        const { name, comment } = this.state;
-        console.log(name, comment)
+        e.target.playVideo();
     }
     handleNameInput = (e) => {
         console.log("Name input updated");
@@ -33,6 +27,14 @@ class Video extends Component {
             comment: newComment
         })
     }
+    handleComment = (e) => {
+        e.preventDefault();
+        const { name, comment } = this.state;
+        console.log(name, comment)
+        return (
+            <p> {name} : {comment}</p>
+        )
+    }
     render() {
         const { id } = this.state;
         const opts = {
@@ -47,10 +49,11 @@ class Video extends Component {
                 <div className = "video-div" >
                 < Youtube videoId={id} opts={opts} onReady={this.handleOnReady} />
                 </div>
+                <br />
                 <form className = "comments-form" onSubmit = {this.handleComment}>
-                    <input placeholder="Name" onChange={this.handleNameInput} />
-                    <input placeholder="Comment" onChange={this.handleCommentInput} />
-                    <input type="submit" value="Submit" />
+                    <input placeholder="Name" onChange={this.handleNameInput} /> <br/>
+                    <input placeholder="Comment" onChange={this.handleCommentInput} /> <br />
+                    <input type="submit" value="submit" />
                 </form>
             </div>
         )
