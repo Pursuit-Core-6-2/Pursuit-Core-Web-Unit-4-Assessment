@@ -8,21 +8,27 @@ import AboutPage from './Components/AboutPage';
 
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      key: null
-    }
+ 
+  constructor(props) {
+    super(props)
+
+   
   }
-async compoundDidMount () {
 
 
-}
+   
+  
+  //  displayList = (props) => {
+
+  //   <HomePage
+  //     results={this.props.results}
+  //   />
+  // }
   
   render() {
     return (
       <div className="App">
-        {/* <APIKey/> */}
+      
         <nav>
           <Link to="/">Home</Link> {" "}
           <Link to="/video">Video</Link> {" "}
@@ -34,11 +40,12 @@ async compoundDidMount () {
           <Route path="/video" component={VideoPage}/>
           <Route path="/about" component={AboutPage}/>
            
-        
         </Switch>
 
-        
-      
+         {/* <HomePage
+      results={this.props.results}
+    /> */}
+
       </div>
     );
   }
