@@ -10,7 +10,7 @@ class HomePage extends React.Component {
             searchValue: '',
             message: 'No results. Enter a search term query',
             searchResults: [],
-            endpoint: 'https://www.googleapis.com/youtube/v3/search'
+            videoId: ''
         }
     }
 
