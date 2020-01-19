@@ -4,6 +4,7 @@
 }
 
 .navbar {
- clip: ;
+ color: red;
+ z-index: 0; 
 }
 

@@ -11,6 +11,8 @@ class VideoPage extends React.Component {
         this.state = {
             name:'',
             comment:'',
+            interger: '',
+            search:''
         }
     }
 
@@ -28,9 +30,10 @@ class VideoPage extends React.Component {
     }
 
     async componentDidMount() {
+        let params = `?part=${snippet}&key=${APIKey}&id=${interger}q=${search} `
         try {
-            let url = `https://www.googleapis.com/youtube/v3/videos/${}`
-            let videos = await axios.get
+            let url = `https://www.googleapis.com/youtube/v3/videos/${params}`
+            let videos = await axios.get(url)
 
         } catch (error){
             console.log('error', error)

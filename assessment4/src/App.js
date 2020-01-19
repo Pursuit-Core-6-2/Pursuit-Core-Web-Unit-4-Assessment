@@ -15,15 +15,6 @@ class App extends React.Component {
    
   }
 
-
-   
-  
-  //  displayList = (props) => {
-
-  //   <HomePage
-  //     results={this.props.results}
-  //   />
-  // }
   
   render() {
     return (
