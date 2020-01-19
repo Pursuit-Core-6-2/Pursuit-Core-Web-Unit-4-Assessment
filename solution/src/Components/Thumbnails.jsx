@@ -10,21 +10,28 @@ class Thumbnail extends Component {
             url: props.url,
             key: props.id,
             name: props.name,
-            id: props.id
+            id: props.id,
+            display: false
         }
     }
     handleThumbnailClick = async (e) => {
         let { id } = this.state;
         let videoCall = await Axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${apiKey}`)
-        console.log(videoCall.data)
-        return(
-            <div>
-                < Video videoId={id}/>
-            </div>
-        )
+        console.log(videoCall.data);
+        this.setState({
+            display: true
+        })
     };
     render() {
-        const { url, key, name, id} = this.state;
+        const { url, key, name, id, display} = this.state;
+        if(display) {
+            return(
+                <div>
+                    < Video videoId={id}/>
+                </div>
+            )
+        } 
+        else {
         return(
             <div className = 'thumbnail-component'>
                 <img src={url} alt={key} id={id} onClick = {this.handleThumbnailClick}/>
@@ -32,6 +39,7 @@ class Thumbnail extends Component {
                 <p className = "video-title"> {name} </p>
             </div>
         )
+    }
     }
 };
 export default Thumbnail;

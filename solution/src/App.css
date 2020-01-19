@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -46,25 +45,28 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center
-}
+};
 .nav-link {
-  flex-wrap: wrap;
-}
+  float: left;
+};
+.nav-title {
+  color: white;
+};
 .thumbnail-container {
   display: grid;
   grid-template-columns: 2fr 2fr;
   grid-gap: 15px;
   justify-content: space-evenly;
   align-content: center;
-}
+};
 .thumbnail-component {
   align-content: center;
-}
+};
 .thumbnail-component > img {
   height: 120px;
   width: auto;
-}
+};
 .video-title {
   font-size: 15px;
   width: 200px;
-}
+};

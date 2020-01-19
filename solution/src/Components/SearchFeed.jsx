@@ -38,12 +38,14 @@ class SearchFeed extends Component {
         const { noSearch, ytResults } = this.state;
         if (noSearch) {
             return (
+                <div>
                 <div className="search-bar">
                     <form onSubmit={this.handleSearch}>
                         <input type='text' placeholder='Search for videos here' onChange={this.handleInputValue} />
                         <input type="submit" value="Search" />
                     </form>
                     <h3> No search results! Search for something above!</h3>
+                </div>
                 </div>
             )
         }
