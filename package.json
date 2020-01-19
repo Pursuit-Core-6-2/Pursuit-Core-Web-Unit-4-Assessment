@@ -1,0 +1,22 @@
+{
+  "name": "pursuit-core-web-unit-4-assessment",
+  "version": "1.0.0",
+  "description": "For this Assessment you will be building a simple YouTube client application. Your app will allow users to search for videos, watch a video and leave a comment for it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maliqtaylor/Pursuit-Core-Web-Unit-4-Assessment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maliqtaylor/Pursuit-Core-Web-Unit-4-Assessment/issues"
+  },
+  "homepage": "https://github.com/maliqtaylor/Pursuit-Core-Web-Unit-4-Assessment#readme",
+  "dependencies": {
+    "axios": "^0.19.1"
+  }
+}
