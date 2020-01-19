@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import { Input } from 'semantic-ui-react'
+import { Input, Button } from 'semantic-ui-react'
 import { getVideoDetails } from '../helperFunctions/apiCalls'
 
 const Home = (props) => {
@@ -14,18 +14,20 @@ const Home = (props) => {
     return (
         <div>
             <Input
-                icon='search'
+                action={<Button onClick={(e) => props.enterSearch(e)}>Search</Button>}
                 placeholder='Search...'
                 onChange={(e) => props.changeSearch(e)}
                 onKeyUp={(e) => props.enterSearch(e)}
+                className='SearchBar'
             />
-            <div>
+            <div className='VideosContainer'>
                 {props.videoList.map(vid => {
                     return (
-                        <div key={vid.id.videoId} id={vid.id.videoId}>
+                        <div key={vid.id.videoId} id={vid.id.videoId} className='VideoDetails'>
                             <img
                                 src={vid.snippet.thumbnails.medium.url}
                                 onClick={() => openVideo(vid.id.videoId)}
+                                className='VideoThumbnail'
                             />
                             <h4 onClick={() => openVideo(vid.id.videoId)}>
                                 {vid.snippet.title}

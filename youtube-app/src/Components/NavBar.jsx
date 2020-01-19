@@ -22,7 +22,7 @@ const MenuExampleBasic = (props) => {
                 </Menu.Item>
             </Link>
 
-            <Link to="about">
+            <Link to="/about">
                 <Menu.Item
                     name='about'
                     active={props.activeItem === 'about'}

@@ -6,6 +6,7 @@ export const getVideoList = async (search) => {
     console.log(searchUrl);
 
     const data = await axios.get(searchUrl)
+    console.log(data)
 
     // console.log(data.data.items)
 

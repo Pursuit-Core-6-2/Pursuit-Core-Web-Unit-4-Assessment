@@ -1,3 +1,67 @@
+.Container {
+  margin: auto;
+  width: 70vw;
+}
+
+.SearchBar {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.VideosContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 970px) {
+  .VideosContainer {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-evenly;
+  }
+}
+
+.VideoThumbnail {
+  width: 320px;
+  height: 180px;
+}
+
+.VideoDetails {
+  width: 340px;
+  height: 230px;
+  margin: 3px;
+  text-align: center;
+}
+
+.VideoDetails:hover {
+  box-shadow: 0 0 5px 1px rgb(210, 208, 211);
+  border-radius: 2px;
+}
+
+.VideoDetails > h4 {
+  margin: 4px 0 0 0;
+  font-size: 1.1rem;
+}
+
+.VideoPage {
+  display: grid;
+  justify-content: center;
+  padding: 30px 0 0 0;
+}
+
+.Comment {
+  /* border-bottom: 1px solid  rgb(196, 193, 193); */
+  margin: 5px 0 10px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(214, 214, 214);
+  padding: 3px 0 3px 10px;
+}
+
+.Comment p {
+  padding: 0 0 0 10px;
+}
+
 /* .App {
   text-align: center;
 }
