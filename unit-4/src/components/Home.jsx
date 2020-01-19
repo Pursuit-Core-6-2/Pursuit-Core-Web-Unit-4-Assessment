@@ -46,7 +46,19 @@ class Home extends Component {
                     <input type="text" placeholder="Search" onChange={this.handleChange} value={searchVids} />
                     <input type="submit" />
                 </form>
-          </div>
+
+            <div>{
+                videos.map(video => {
+                    return (
+                        <Link to={`/videos/${video.id.videoId}`}>
+                            <img src={video.id.videoId} />
+                            <p> {video.snippet.title}</p>
+                        </Link>
+                    )
+                })
+            }</div >
+            </div>
+
     )
     }
 }
