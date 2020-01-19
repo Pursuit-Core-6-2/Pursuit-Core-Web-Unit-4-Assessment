@@ -4,7 +4,19 @@ Homepage Page Component Styling | YouTube Abbreviated | Unit 4 Assessment
 */
 
 
+.result-response {
+  grid-column: span 2;
+}
+
 .msg-error {
   color: red;
   font-weight: bold;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: max-content;
+
+  margin: 33px 13%;
 }

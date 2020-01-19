@@ -11,7 +11,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
     // local
+import myKey from '../secrets.js';
 import './Homepage.css';
+import VideoCard from '../components/VideoCard';
+
 const {
   processInput
 } = require('../helpers/globalHelp.jsx');
@@ -28,8 +31,8 @@ export default class Homepage extends Component {
     isBeginning: true
   }
   hardData ={
-    msgWelcome: <p>Search for videos above!</p>,
-    msgEmpty: <p>Sorry, no search results found. Try your search again above.</p>
+    msgWelcome: <p className="result-response">Search for videos above!</p>,
+    msgEmpty: <p className="result-response">Sorry, no search results found. Try your search again above.</p>
   }
 
 
@@ -53,13 +56,28 @@ export default class Homepage extends Component {
       });
     } else {
       console.log("Hit");
+      this.getSearchResults(payload);
     }
     
   }
 
 
-  getSearchResults = async () => {
-
+  getSearchResults = async (search) => {
+    const baseUrl = `https://www.googleapis.com/youtube/v3/search`;
+    const prepParams = `?part=snippet&key=${myKey}&maxResults=8`;
+    const prefixSearch = `&q=`;
+    const response = await axios.get(
+      baseUrl +
+      prepParams +
+      prefixSearch +
+      search
+    );
+    // console.log(response.data.items);
+    this.setState({
+        errorMessage: "",
+        results: response.data.items,
+        isBeginning: false
+    });
   }
 
 
@@ -69,6 +87,24 @@ export default class Homepage extends Component {
 
     let listResults = null;
 
+    if (results.length) {
+      listResults = results.map(result => {
+          const videoId = result.id.videoId;
+          const title = result.snippet.title;
+          const desc = result.snippet.description;
+          const thumbUrl = result.snippet.thumbnails.high.url; // width: 480px h: 360px
+
+          return (
+            <VideoCard 
+              key={videoId} 
+              videoId={videoId} 
+              title={title} 
+              desc={desc} 
+              thumbUrl={thumbUrl} 
+            />
+          );
+      });
+    }
 
     let showing = null;
     if (isBeginning) {
@@ -80,7 +116,7 @@ export default class Homepage extends Component {
     }
 
     return(
-      <div>
+      <div className="stage">
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="searchTxt" className="input-search" value={searchTxt} onChange={this.handleChange} />
           <button className="btn-search">Search</button>
@@ -88,7 +124,9 @@ export default class Homepage extends Component {
 
         <div className="msg-error">{errorMessage}</div>
 
-        {showing}
+        <div className="results-grid">
+          {showing}
+        </div>
 
       </div>
     );

@@ -6,7 +6,7 @@ Global Helper Functions | YouTube Abbreviated | Unit 4 Assessment
 
 const processInput = (input, descriptionString) => {
   let output = {
-    pass: null,
+    pass: false,
     payload: ""
   };
   switch (descriptionString) {
@@ -14,6 +14,9 @@ const processInput = (input, descriptionString) => {
       console.log(input);
       if (!input || !input.trim()) {
         output.payload = "Invalid search. Please re-enter your query and try again.";
+      } else {
+        output.pass = true;
+        output.payload = input.trim();
       }
     break;
     default :

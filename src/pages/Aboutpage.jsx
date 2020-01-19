@@ -1,6 +1,6 @@
 /*
 JOSEPH P. PASAOA
-Video Page Component | YouTube Abbreviated | Unit 4 Assessment
+Aboutpage Component | YouTube Abbreviated | Unit 4 Assessment
 */
 
 
@@ -9,11 +9,11 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 // import axios from 'axios';
 
-// import './Video.css';
+// import './About.css';
 
 
 /* COMPONENT + EXPORT */
-export default class Video extends Component {
+export default class Aboutpage extends Component {
   state = {
 
   }
@@ -22,7 +22,7 @@ export default class Video extends Component {
   render() {
     return(
       <div>
-        Video
+        About
       </div>
     );
   }

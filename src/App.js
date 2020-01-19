@@ -15,8 +15,8 @@ import './App.css';
 
 import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage';
-import Video from './pages/Video';
-import About from './pages/About';
+import Videopage from './pages/Videopage';
+import Aboutpage from './pages/Aboutpage';
 
 
 /* COMPONENT */
@@ -26,8 +26,8 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path={'/'} component={Homepage} />
-        <Route path={'/video/:id'} component={Video} />
-        <Route path={'/about'} component={About} />
+        <Route path={'/video/:id'} component={Videopage} />
+        <Route path={'/about'} component={Aboutpage} />
         <Route path={'/'} component={Homepage} />
       </Switch>
     </div>
