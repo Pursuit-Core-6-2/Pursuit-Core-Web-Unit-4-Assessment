@@ -18,13 +18,16 @@ ul.nav-bar {
   margin-left: 0px;
   margin-right: 22px;
   padding: 3px 6px 5px 6px;
+  border: 1px solid transparent;
+
+  transition: border 1s;
 
   text-decoration: none;
   color: white;
 }
 
 .nav-link.active:link, .nav-link.active:visited {
-  color: #666;
+  color: dodgerblue;
   border-top: solid 1px red;
   border-bottom: solid 1px red;
 }

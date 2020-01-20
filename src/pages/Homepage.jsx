@@ -86,7 +86,7 @@ export default class Homepage extends Component {
     let listResults = null;
 
     if (results.length) {
-      listResults = results.map(result => {
+      listResults = results.map((result, i) => {
           const videoId = result.id.videoId;
           const title = result.snippet.title;
           const desc = result.snippet.description;
@@ -94,7 +94,7 @@ export default class Homepage extends Component {
 
           return (
             <VideoCard 
-              key={videoId} 
+              key={i} 
               videoId={videoId} 
               title={title} 
               desc={desc} 

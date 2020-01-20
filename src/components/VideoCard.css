@@ -4,6 +4,10 @@ VideoCard Component Styling | YouTube Abbreviated | Unit 4 Assessment
 */
 
 
+.card-video-link {
+  height: 100%;
+}
+
 .card-video-box {
   margin: 6px;
   padding: 6px 11px 22px 11px;
@@ -11,6 +15,8 @@ VideoCard Component Styling | YouTube Abbreviated | Unit 4 Assessment
 
 .card-video-thumbnail {
   width: 400px;
+  height: 300px;
+  object-fit: cover;
   margin-bottom: 3px;
 }
 
