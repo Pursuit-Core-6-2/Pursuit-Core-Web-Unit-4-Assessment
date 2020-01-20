@@ -30,6 +30,7 @@ class VideoPage extends React.Component {
     }
 
     async componentDidMount() {
+        const { search, snippet, interger} = this.state
         let params = `?part=${snippet}&key=${APIKey}&id=${interger}q=${search} `
         try {
             let url = `https://www.googleapis.com/youtube/v3/videos/${params}`

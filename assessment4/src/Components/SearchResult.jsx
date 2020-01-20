@@ -20,9 +20,14 @@ class SearchResults extends React.Component {
             <div>
                 <div>
                      {  this.props.results.map((result, index)  => {
-                        console.log("result", result )
+                        {/* console.log("result", result ) */}
+                        console.log('check', result.snippet.thumbnails.high.url )
                         return(
-                            <img src={results} key={index}></img>
+                            < img src = {
+                                result.snippet.thumbnails.high.url
+                            } >
+
+                            </img>
                         )
                     })}
                 </div>

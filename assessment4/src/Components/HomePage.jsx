@@ -36,7 +36,7 @@ class HomePage extends React.Component {
             let response = await axios.get(searchUrl)
             // for (let i = 0; i < )
             
-            console.log('response', response.data.items[index])
+            console.log('response', response.data.items)
             const data  = response.data.items
             
             // console.log('data', data)
