@@ -9,7 +9,7 @@ CommentCard Component | YouTube Abbreviated | Unit 4 Assessment
 import React from 'react';
 
     // local
-// import './CommentCard.css';
+import './CommentCard.css';
 
 
 /* COMPONENT */

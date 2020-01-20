@@ -33,6 +33,19 @@ input[type="text"] {
   font-size: 1em;
 }
 
+textarea {
+  border-width: 2px;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial;
+
+  border-radius: 3px;
+  padding: 3px;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
 button {
   height: 2em;
   border-radius: 13px;
