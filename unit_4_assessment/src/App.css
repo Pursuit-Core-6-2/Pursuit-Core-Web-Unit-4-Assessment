@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+.youtubeThumbnailDivs {
+  width: 50%;
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.thumbnailTitle {
+  font-size: 30%;
+}
+
+.postsWrapper {
+  width: 50%;
+  border: solid 2px black;
+  margin-top: 1%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+}
+
+nav {
+  background-color: red;
+  color: white;
+  height: 50px;
+}
+
+.homeWrapper {
+  margin-top: 1%;
+}
