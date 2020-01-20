@@ -3,6 +3,7 @@ import axios from "axios";
 import API_KEY from "../secrets";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
+// import Video from "./Video";
 
 class Home extends Component {
     constructor() {
@@ -10,8 +11,6 @@ class Home extends Component {
         this.state = {
             url: "",
             searchTerm: "",
-            videoIds: [],
-            results: [],
             videoContent: []
         }
     }
@@ -25,56 +24,36 @@ class Home extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const { searchTerm, videoIds, results, videoContent } = this.state;
+        const { searchTerm, videoContent } = this.state;
         console.log("about to search videos for", searchTerm);
         try {
             let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${searchTerm}&safeSearch=strict&type=video&key=${API_KEY}`;
 
             let res = await axios.get(url);
-            console.log("res:", res.data.items);
+            //console.log("res:", res);
+            console.log("res.data.items:", res.data.items);
             res = res.data.items;
+            console.log(res.snippet)
             for(let i = 0; i < res.length; i++) {
-                videoIds.push(res[i].id.videoId);
                 videoContent.push(res[i]);
             }
-            console.log("videoContent", videoContent);
             this.setState({
-                videoIds: videoIds,
                 videoContent: videoContent
-            })
-            console.log("videoIds", videoIds);
+            });
 
-            for(let i = 0; i < videoIds.length; i++) {
-                url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&maxResults=8&q=${searchTerm}&safeSearch=strict&type=video&id=` + `${videoIds[i]}` + `&key=${API_KEY}`;
-                let res = await axios.get(url);
-                results.push(res);
-            }
-            console.log("results:", results);
+            console.log("videoContent:", videoContent);
 
         } catch(err) {
             console.log("Error:", err);
         }
     }
 
-    _onReady(event) {
-        event.target.pauseVideo();
-    }
-
 
         render() {
-            const { searchTerm, videoIds, results, videoContent } = this.state;
-            // console.log("results", results);
-            // console.log("videoContent", videoContent);
-            const opts = {
-                height: '150',
-                width: '300',
-                playerVars: { // https://developers.google.com/youtube/player_parameters
-                    autoplay: 0
-                }
-            };
-
+            const { searchTerm, videoContent } = this.state;
+          
             return(
-                <div>
+                <div className="homeWrapper">
                     <form onSubmit={this.handleSubmit}>
                         <input 
                             type="text"
@@ -84,22 +63,23 @@ class Home extends Component {
                         />
                         <input type="submit" />
                     </form>
-                    
-                        <div id="youtubeVideosWrapper">
-                            {videoIds.map(element => {
-                                return(                           
-                                    <div className="youtubeVideoDivs">
-                                        <YouTube
-                                            className="youtubeElement"
-                                            videoId={element} 
-                                            id={element}                       
-                                            opts={opts}               
-                                            onReady={this._onReady}
-                                            propToPass={element}
-                                        />
-                                    </div>);
-                            })}
-                        </div>
+
+                    <div className="wrapper">{
+                        videoContent.map(element => {
+                            return(
+                                <div className="youtubeThumbnailDivs">
+                                    <div>
+                                    <Link to={`/video/${element.id.videoId}`}>
+                                        <img src={element.snippet.thumbnails.default.url} />
+                                    </Link>
+                                    </div>
+                                    <div>
+                                        <p className="thumbnailTitle"><strong>{element.snippet.title}</strong></p>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }</div>
                     
                 </div>
             );

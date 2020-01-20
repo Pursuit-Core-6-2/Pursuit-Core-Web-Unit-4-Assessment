@@ -9,13 +9,26 @@ class Video extends Component {
             super();
             this.state = {
                 nameInput: "",
-                commentInput: ""
+                commentInput: "",
+                id: "",
+                posts: []
             }
     }
 
+    async componentDidMount () {
+        console.log("props:", this.props.match);
+         let id = this.props.match.params.id
+         console.log(id.slice(1));
+
+        await axios.get(`https://www.youtube.com/watch?v=${id}`)
+        this.setState({
+            id: id
+        })
+  }
+
     handleNameInput = (e) => {
         this.setState({
-            searchTerm: e.target.value
+            nameInput: e.target.value
         });
     }
 
@@ -26,48 +39,46 @@ class Video extends Component {
     }
 
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        const { nameInput, commentInput } = this.state;
+        const { nameInput, commentInput, posts } = this.state;
         console.log("handling submit method starting in the video component");
-        try {
-            const params = `?api_key=${API_KEY}&q=${searchTerm}`;
-            let url = `https://api.giphy.com/v1/gifs/search${params}`;
-            let res = await axios.get(url);
-            this.setState({
-                gifs: res.data.data
-            });
-            console.log("res.data:", res.data);
+        // try {
+        //     const params = `?api_key=${API_KEY}&q=${searchTerm}`;
+        //     let url = `https://api.giphy.com/v1/gifs/search${params}`;
+        //     let res = await axios.get(url);
+        //     this.setState({
+        //         gifs: res.data.data
+        //     });
+        //     console.log("res.data:", res.data);
 
-        } catch(err) {
-            console.log("Error:", err);
-        }
-    }
-
-
-    async componentDidMount() {
-        const { id } = this.props.match.params;
-
-        try {
-            const url = `https://api.giphy.com/v1/gifs/${id}?api_key=${API_KEY}`;
-            const res = await axios.get(url);
-            console.log("res.data:", res.data);
-            this.setState({
-                gif: res.data.data
-            });
-
-        } catch(err) {
-            console.log("Error:", err);
-        }
+        // } catch(err) {
+        //     console.log("Error:", err);
+        // }
+        posts.push({
+            name: nameInput,
+            comment: commentInput
+        });
+        console.log(posts);
+        this.setState({
+            posts: posts
+        });
     }
 
     render() {
-        const { nameInput, commentInput } = this.state;
+        const { nameInput, commentInput, id, posts } = this.state;
       
 
         return(
             <div>
-                <form>
+                 <div className="youtubeVideoDivs">
+                        <YouTube
+                            className="youtubeElement"
+                            videoId={id} 
+                            id={id}                       
+                        />
+                </div>
+                <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text"
                         placeholder="name"
@@ -82,7 +93,19 @@ class Video extends Component {
                     />
                     <input type="submit"/>
                 </form>
+
+                <div>
+                    {posts.map(element => {
+                        return (
+                            <div className="postsWrapper">
+                                <h2>Name: {element.name}</h2>
+                                <h3>Comment: {element.comment}</h3>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+
         );
     }
 }
