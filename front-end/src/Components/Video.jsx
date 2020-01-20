@@ -11,8 +11,9 @@ class Video extends React.Component {
         this.state = {
             name: "",
             comment: '',
-            nameAndComment: {},
-            counter: 0,
+            nameAndComment: [],
+            commentArr: [],
+            nameArr: []
         }
     }
 
@@ -31,23 +32,30 @@ class Video extends React.Component {
             comment: event.target.value
         })
     }
-    // async componentDidMount() {
-    //  
-    // }
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { name, comment, nameAndComment, counter } = this.state
-   
+        const { name, comment, nameAndComment, nameArr, commentArr } = this.state
 
-        this.setState({
-            nameAndComment: nameAndComment.concat(name)
-        })
+        if (comment && name) {
+            let obj = {
+                currentName: name,
+                currentComment: comment
+            }
+
+            this.setState({
+                nameAndComment: [...this.state.nameAndComment, obj],
+                name: "",
+                comment:""
+            })
+        }
+
 
     }
 
     render() {
         const { name, comment, nameAndComment } = this.state
         console.log(this.state.nameAndComment)
+
         const { id } = this.props.match.params
         const opts = {
             height: '390',
@@ -56,6 +64,8 @@ class Video extends React.Component {
                 autoplay: 0
             }
         }
+
+
         return (
             <div className="Home">
                 <YouTube
@@ -65,13 +75,24 @@ class Video extends React.Component {
                 />
                 <form className="videoSubmit" onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Name:</label>
-                    <input className="name" onChange={this.handleName} placeholder="Name..." />
+                    <input className="name" onChange={this.handleName} placeholder="Name..." value={name}/>
                     <label htmlFor="comment">Comment:</label>
-                    <input className="comment" onChange={this.handleComment} placeholder="..." />
+                    <input className="comment" onChange={this.handleComment} placeholder="..." value = {comment} />
                     <input className="videoInputSubmit" type="submit" value="Submit" />
                 </form>
-                <h1 className="singlName">{name}</h1>
-                <p className="singleComment">{comment}</p>
+                {/* <h1 className="singlName">{name}</h1>
+                <p className="singleComment">{comment}</p> */}
+
+                <div className="commentsMade">{
+                    nameAndComment.map(el => {
+                        return <div>
+                            <h2 className="singlName"> {el.currentName}</h2>
+                            <p className="singleComment"> {el.currentComment}</p>
+                        </div>
+                    })
+                }
+
+                </div>
 
             </div>
         );
