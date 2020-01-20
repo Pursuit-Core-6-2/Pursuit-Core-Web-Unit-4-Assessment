@@ -34,7 +34,7 @@ class HomePage extends React.Component {
         try {
             let searchUrl = `https://www.googleapis.com/youtube/v3/search/${params}`
             let response = await axios.get(searchUrl)
-            // for (let i = 0; i < )
+ 
             
             console.log('response', response.data.items)
             const data  = response.data.items

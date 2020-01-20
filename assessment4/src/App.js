@@ -21,10 +21,11 @@ class App extends React.Component {
       <div className="App">
       
         <nav className='navbar'>
+           <Link to='/youtube'>Youtube</Link>
           <Link to="/">Home</Link> {" "}
           <Link to="/video">Video</Link> {" "}
           <Link to="/about">About</Link>  {" "}
-          <Link to='/youtube'>Youtube</Link>
+          {/* <Link to='/youtube'>Youtube</Link> */}
         </nav>
 
         <Switch>
