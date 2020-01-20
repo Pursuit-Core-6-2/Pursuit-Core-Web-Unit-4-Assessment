@@ -54,8 +54,6 @@ class Video extends React.Component {
 
     render() {
         const { name, comment, nameAndComment } = this.state
-        console.log(this.state.nameAndComment)
-
         const { id } = this.props.match.params
         const opts = {
             height: '390',
