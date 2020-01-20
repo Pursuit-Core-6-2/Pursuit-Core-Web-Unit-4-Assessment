@@ -37,8 +37,8 @@ export default class Videopage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const nameCheck = processInput(this.state.nameTxt, "name");
-      const [ namePass, namePayload ] = [ nameCheck.pass, nameCheck.payload ];
     const cmtCheck = processInput(this.state.commentTxt, "comment");
+      const [ namePass, namePayload ] = [ nameCheck.pass, nameCheck.payload ];
       const [ cmtPass, cmtPayload ] = [ cmtCheck.pass, cmtCheck.payload ];
     if (!namePass && !cmtPass) {
       this.setState({
@@ -74,22 +74,31 @@ export default class Videopage extends Component {
     const { nameTxt, commentTxt, errorMessage, comments } = this.state;
 
     const opts = {
-      origin: window.location.origin 
+      height: '539',
+      width: '720',
+      playerVars: {
+        origin: "https://localhost:3000",
+        autoplay: 1,
+      }
     }
 
-    const listComments = comments.map(({name, comment}, index) => {
-        return (
-          <CommentCard 
-            key={videoId + "-" + index}
-            name={name} 
-            comment={comment} 
-          />
-        );
-    });
+    let listComments = null;
+    if (comments.length) {
+      listComments = comments.map(({name, comment}, i) => {
+          return (
+            <CommentCard 
+              key={videoId + "-" + i}
+              name={name} 
+              comment={comment} 
+            />
+          );
+      });
+    }
 
 
     return(
       <div className="stage">
+
         <div className="ytvideo-box">
           <YouTube
             key={videoId} 
@@ -113,7 +122,6 @@ export default class Videopage extends Component {
             onChange={this.handleChange} 
             required 
           />
-
           <label htmlFor="commentTxt">Comment</label>
           <input 
             type="text" 
@@ -125,7 +133,6 @@ export default class Videopage extends Component {
             onChange={this.handleChange} 
             required 
           />
-
           <button className="btn-search">Search</button>
         </form>
 

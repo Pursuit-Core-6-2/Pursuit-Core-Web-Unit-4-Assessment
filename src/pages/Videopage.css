@@ -14,6 +14,7 @@ Videopage Component Styling | YouTube Abbreviated | Unit 4 Assessment
 
 .ytvideo-box {
   margin: 22px auto;
+  height: 540px;
 }
 
 label {

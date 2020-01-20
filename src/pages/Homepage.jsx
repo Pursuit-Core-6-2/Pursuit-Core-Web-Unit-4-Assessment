@@ -84,7 +84,6 @@ export default class Homepage extends Component {
     const { msgWelcome, msgEmpty } = this.hardData;
 
     let listResults = null;
-
     if (results.length) {
       listResults = results.map((result, i) => {
           const videoId = result.id.videoId;
