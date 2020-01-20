@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
-
 import 'semantic-ui-css/semantic.min.css'
 
 import About from './Components/About'
@@ -10,7 +8,7 @@ import Video from './Components/Video'
 import Home from './Components/Home'
 import NavBar from './Components/NavBar'
 
-import { getVideoList, getVideoDetails } from './helperFunctions/apiCalls'
+import { getVideoList } from './helperFunctions/apiCalls'
 
 class App extends Component {
   state = {
@@ -19,6 +17,7 @@ class App extends Component {
     videoList: []
   }
 
+  handleVideoDetails = (vid) => this.setState({ vidDetails: vid })
   handleItemClick = (e, name) => this.setState({ activeItem: name })
   handleChange = (e) => this.setState({ search: e.target.value })
   handleEnter = async (e) => {
@@ -27,8 +26,6 @@ class App extends Component {
       this.setState({ videoList: results })
     }
   }
-  handleVideoDetails = (vid) => this.setState({ vidDetails: vid })
-
 
   render() {
     const { activeItem, search, videoList } = this.state

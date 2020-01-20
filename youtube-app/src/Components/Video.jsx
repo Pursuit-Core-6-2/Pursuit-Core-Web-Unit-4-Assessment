@@ -1,24 +1,16 @@
 import React, { useState } from 'react'
 import VideoPlayer from './VideoPlayer'
 import { Input, Button } from 'semantic-ui-react'
-import { getVideoDetails } from '../helperFunctions/apiCalls'
 
 const Video = (props) => {
-    // console.log(props)
     const [name, setName] = useState('')
     const [comment, setComment] = useState('')
-    const [state, setState] = useState([{ name: 'test', com: 'Hello World!' }])
-    // console.log(props)
-    // console.log(props.match.params.id)
-    // const data = getVideoDetails(props.match.params.id)
-    // console.log('Video Data', data)
+    const [state, setState] = useState([{ name: 'Be named he who must not', com: '🔥' }])
 
     return (
         <div className='VideoPage'>
             <VideoPlayer vidId={props.match.params.id} />
-
-            <br/>
-
+            <br />
             <Input placeholder='Name' onChange={(e) => setName(e.target.value)} value={name} />
             <br />
             <Input placeholder='Comment' onChange={(e) => setComment(e.target.value)} value={comment} />
@@ -32,7 +24,7 @@ const Video = (props) => {
             <div>
                 {state.map(ele => {
                     return (
-                        <div className='Comment'>
+                        <div className='Comment' key={ele.name}>
                             <h3>{ele.name}</h3>
                             <p>{ele.com}</p>
                         </div>

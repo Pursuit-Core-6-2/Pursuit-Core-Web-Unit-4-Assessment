@@ -1,16 +1,15 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Input, Button } from 'semantic-ui-react'
 import { getVideoDetails } from '../helperFunctions/apiCalls'
 
 const Home = (props) => {
     const openVideo = async (id) => {
         const data = await getVideoDetails(id)
-        // console.log(data)
         props.changeVidDetails(data.data)
         props.history.push(`/videos/${id}`)
     }
-    // console.log(props)
+    
     return (
         <div>
             <Input
@@ -28,6 +27,7 @@ const Home = (props) => {
                                 src={vid.snippet.thumbnails.medium.url}
                                 onClick={() => openVideo(vid.id.videoId)}
                                 className='VideoThumbnail'
+                                alt="Thumbnail"
                             />
                             <h4 onClick={() => openVideo(vid.id.videoId)}>
                                 {vid.snippet.title}
