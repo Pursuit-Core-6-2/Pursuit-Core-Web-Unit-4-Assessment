@@ -30,7 +30,7 @@ class Search extends Component {
                     <VideoPreview    
                         videoID={v.id.videoId}
                         videoTitle={v.snippet.title}
-                        channelTitle={v.channelTitle}
+                        channelTitle={v.snippet.channelTitle}
                         datePublished={date.toString().slice(0, 15)}
                         thumbnailUrl={v.snippet.thumbnails.medium.url}
                     />

@@ -26,9 +26,6 @@ class VideoPreview extends React.Component {
                 <Link to={`/video/${videoID}`}>
                     <div className='image-container'>
                         <Image src={thumbnailUrl} />
-                        {/* <div className='time-label'>
-                            <span>05:22</span>
-                        </div> */}
                     </div>
                 </Link>
                     <div className='video-info'>
