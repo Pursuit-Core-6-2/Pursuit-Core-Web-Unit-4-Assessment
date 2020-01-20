@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+  margin-top: 10px;
+}
+.navBar{
+  display: grid;
+  grid-template-columns: 160px 80px auto;
+  align-items: center;
+  text-align: start;
+  background-color: #FF0000;
+  padding: 10px;
+  margin-top: 4px;
+  margin-bottom: 30px;
+}
+
+.links{
+  text-decoration: none;
+}
+.searchInput{
+  width: 41%;
+  height: 25px;
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 5%;
+
+}
+.youtube{
+  margin: 0px;
+  height: auto;
+}
+.youtube, .links {
+  color: white;
+  font-family:  Roboto, arial, sans-serif
+}
+
+.submitButton{
+  color:white;
+  background-color: #ff0000;
+  font-family:  Roboto, arial, sans-serif;
+  height: 33px;
+    width: 60px;
+    border-radius: 15px;
+}
+.videoListing{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  /* padding-top: 5%; */
+  margin-left: 23%;
+  margin-right: 23%;
+  grid-gap: 15px;
+}
+
+
+.searchResults{
+  height:200px;
+  width:auto;
+  
+}
+
+
+
+.videoSubmit{
+  display: grid;
+  margin-left: 22%;
+  margin-right: 40%;
+  text-align: start;
+}
+
+.videoInputSubmit{
+width:50px;
+}
+
+.name, .comment{
+  width:75%;
+  height:20px;
+}
+
+.name, .comment,.videoInputSubmit, label  {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.noResult{
+  background-color: #c1c1c1;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 10px;
+}
+
+
+.singlName, .singleComment{
+  margin-left: 22%;
+  text-align: start;
+  font-family:  Roboto, arial, sans-serif;
+  margin-bottom: 0px;
+
+}
+
+.singlName{
+  margin-bottom: 0px;
+}
+.singleComment{
+  margin-top:0px;
+}
