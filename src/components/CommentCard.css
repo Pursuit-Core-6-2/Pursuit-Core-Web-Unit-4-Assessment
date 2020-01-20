@@ -4,6 +4,15 @@ CommentCard Component Styling | YouTube Abbreviated | Unit 4 Assessment
 */
 
 
+.card-comment-box {
+  width: 100%;
+}
+
+h2 {
+  margin-top: 22px;
+}
+
 .card-comment-body {
   white-space: pre-line;
+  margin: 11px 0px 44px 0px;
 }

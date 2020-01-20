@@ -15,6 +15,11 @@ App MAIN Component Styling | YouTube Abbreviated | Unit 4 Assessment
   font-size: 0.85em;
 }
 
+.stage {
+  width: auto;
+  grid-row: 2;
+}
+
 h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 1.3em;
