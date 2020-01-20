@@ -10,11 +10,14 @@ Videopage Component Styling | YouTube Abbreviated | Unit 4 Assessment
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
+
+  width: auto;
 }
 
 .ytvideo-box {
-  margin: 22px;
+  margin: 22px 3px;
   height: 510px;
+  width: min-content;
 }
 
 .form-comments {

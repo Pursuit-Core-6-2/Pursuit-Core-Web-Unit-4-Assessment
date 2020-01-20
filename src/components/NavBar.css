@@ -11,6 +11,9 @@ ul.nav-bar {
   justify-content: flex-start;
   align-items: center;
 
+  position: fixed;
+  width: auto;
+
   background-color: #000;
 }
 
