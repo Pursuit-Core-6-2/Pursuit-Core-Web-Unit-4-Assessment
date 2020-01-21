@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom'
 import HomePage from "./components/homepage"
+import Video from "./components/video"
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
       <Switch>
         <Route exact path = "/" component = {HomePage}/>
-        <Route path = "/video"/>
+        <Route path = "/video/:videoId"  component = {Video}/>
       </Switch>
       
 

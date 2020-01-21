@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-function YouTubeVid(props) {
+function ThumbNail(props) {
     return (
         <div>
             <p>{props.title}</p>
@@ -14,4 +14,4 @@ function YouTubeVid(props) {
 }
 
 
-export default YouTubeVid
+export default ThumbNail

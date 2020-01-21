@@ -1,8 +1,10 @@
 import React, { Component } from "react"
+import {Route} from "react-router-dom"
+import Video from "./video"
 import secrets from "./secrets"
 import axios from "axios"
 import YouTube from 'react-youtube'
-import YouTubeVid from './youtubeVid'
+import ThumbNail from './thumbnail'
 
 class HomePage extends Component {
     constructor() {
@@ -50,17 +52,7 @@ class HomePage extends Component {
 
     render() {
         let { search_term, videos } = this.state
-        const opts = {
-            height: '390',
-            width: '640',
-            playerVars: {  
-            //   origin:  "https://localhost:3000",
-              autoplay: 1,
-            //   enablejsapi: 1,
-            //   src: "http://localhost:3000"
-            }
-          };
-          
+                  
         
         
         console.log(YouTube)
@@ -85,7 +77,7 @@ class HomePage extends Component {
                     //     videoId = {el.id.videoId} 
                     //     opts = {opts} 
                     //    />
-                        return <YouTubeVid 
+                        return <ThumbNail 
                         title = {el.snippet.title}
                         url = {el.snippet.thumbnails.default.url}
                         videoId = {el.id.videoId}
@@ -94,6 +86,8 @@ class HomePage extends Component {
 
                     })}
                 </div>
+
+                <Route path = "/video/:videoId" Component = {Video}/>
 
             </div>
         )
