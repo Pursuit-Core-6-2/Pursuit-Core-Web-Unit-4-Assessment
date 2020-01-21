@@ -92,6 +92,18 @@ export default class Videopage extends Component {
     this.refs.button.blur();
   }
 
+  // future return to top feature wip
+  // handleScrollToTop = () => {
+  //   if (this.$ref && location.href.includes('#my-ref')) {
+  //     this.$ref.scrollIntoView({
+  //         // optional params
+  //         behaviour: 'smooth',
+  //         block: 'start',
+  //         inline: 'center',
+  //     });
+  //   }
+  // }
+
 
   render() {
     const videoId = this.props.match.params.id;
@@ -145,6 +157,7 @@ export default class Videopage extends Component {
               ref="input1" 
               value={nameTxt} 
               onChange={this.handleChange} 
+              placeholder="Your Name"
             />
           </div>
           <div className="form-row">
@@ -158,6 +171,7 @@ export default class Videopage extends Component {
               value={commentTxt} 
               onChange={this.handleChange} 
               onKeyDown={this.handleKeydown} 
+              placeholder="What do you want to say?..." 
             />
           </div>
           <div className="form-row">
@@ -168,6 +182,7 @@ export default class Videopage extends Component {
 
         <div className="display-comments">
           {listComments}
+          {/* {comments.length ? <Link to={{ hash: "#top" }}>Return to top</Link> : false} */}
         </div>
 
       </div>

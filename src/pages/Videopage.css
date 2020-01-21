@@ -42,9 +42,13 @@ Videopage Component Styling | YouTube Abbreviated | Unit 4 Assessment
 }
 
 .form-comments label {
+  position: relative;
+  top: 1px;
+
   display: block;
-  margin: 3px 6px;
+  margin: 0px 6px;
   min-width: 80px;
+
   text-align: left;
 }
 
