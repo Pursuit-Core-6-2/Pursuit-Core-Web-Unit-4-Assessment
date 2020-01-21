@@ -23,22 +23,17 @@ class HomePage extends Component {
 
     }
     
-    onReady(event) {
-        // access to player in all event handlers via event.target
-        event.target.pauseVideo();
-      }
-    
 
-    handleFromSubmit = (e) => {
+    handleFromSubmit = async (e) => {
         let { key, search_term } = this.state
         e.preventDefault()
 
         try {
 
-            let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${search_term}&key=${key}`
-            axios.get(url)
+            let  url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${search_term}&key=${key}`
+            await axios.get(url)
                 .then(res => {
-                    console.log(res.data.items[0].snippet.thumbnails.default.url)
+                    console.log(res.data.items[0].id)
                     this.setState({
                         videos: res.data.items
                     })
@@ -59,15 +54,16 @@ class HomePage extends Component {
             width: '640',
             playerVars: {  
             //   origin:  "https://localhost:3000",
-              autoplay: 0,
-              enablejsapi: 1,
-              src: "http://localhost:3000"
+              autoplay: 1,
+            //   enablejsapi: 1,
+            //   src: "http://localhost:3000"
             }
           };
           
         
         
         console.log(YouTube)
+        
         return (
             <div id="search-field">
                 <form onSubmit={this.handleFromSubmit}>
@@ -85,7 +81,7 @@ class HomePage extends Component {
                         return <YouTube 
                         onReady = {this.onReady}
                         key = {index} 
-                        videoId = {el.id.channelId} 
+                        videoId = {el.id.videoId} 
                         opts = {opts} 
                        />
                         // <YouTubeVid 

@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 
-./src/components/secrets.js
+#secrets
+.secrets.js
 
 # testing
 /coverage
