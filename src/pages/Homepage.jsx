@@ -5,21 +5,16 @@ Homepage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-    // external
-import React, { Component } from 'react';
-// import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+// external
+    import React, { Component } from 'react';
+    // import { Switch, Route } from 'react-router-dom';
 
-    // local
-import myKey from '../secrets.js';
-import './Homepage.css';
-import VideoCard from '../components/VideoCard';
+// local
+    import './Homepage.css';
+    import VideoCard from '../components/VideoCard';
 
-const {
-  processInput
-} = require('../helpers/globalHelp.jsx');
-
-
+    import { getApiSearch } from '../helpers/apiComm.js';
+    const { processInput } = require('../helpers/globalHelp.js');
 
 
 /* COMPONENT + EXPORT */
@@ -61,19 +56,10 @@ export default class Homepage extends Component {
 
 
   getSearchResults = async (search) => {
-    const baseUrl = `https://www.googleapis.com/youtube/v3/search`;
-    const prepParams = `?part=snippet&key=${myKey}&maxResults=8`;
-    const prefixSearch = `&q=`;
-    const response = await axios.get(
-      baseUrl +
-      prepParams +
-      prefixSearch +
-      search
-    );
-    // console.log(response.data.items);
+    const results = await getApiSearch(search);
     this.setState({
         errorMessage: "",
-        results: response.data.items,
+        results: results,
         isBeginning: false
     });
   }

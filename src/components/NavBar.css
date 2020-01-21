@@ -35,3 +35,7 @@ ul.nav-bar {
   border-top: solid 1px red;
   border-bottom: solid 1px red;
 }
+
+.now-playing {
+  color: #fff;
+}

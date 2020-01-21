@@ -5,17 +5,14 @@ Videopage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-import React, { Component } from 'react';
-import YouTube from 'react-youtube';
+// external
+    import React, { Component } from 'react';
+    import YouTube from 'react-youtube';
 
-import './Videopage.css';
-
-import CommentCard from '../components/CommentCard';
-
-
-const {
-  processInput
-} = require('../helpers/globalHelp.jsx');
+// local
+    import './Videopage.css';
+    import CommentCard from '../components/CommentCard';
+    const { processInput } = require('../helpers/globalHelp.js');
 
 
 /* COMPONENT + EXPORT */
