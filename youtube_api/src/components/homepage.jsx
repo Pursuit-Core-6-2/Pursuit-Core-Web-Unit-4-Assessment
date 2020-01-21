@@ -22,6 +22,7 @@ class HomePage extends Component {
         })
 
     }
+
     
 
     handleFromSubmit = async (e) => {
@@ -30,10 +31,10 @@ class HomePage extends Component {
 
         try {
 
-            let  url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${search_term}&key=${key}`
+            let  url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search_term}&key=${key}`
             await axios.get(url)
                 .then(res => {
-                    console.log(res.data.items[0].id)
+                    console.log(res.data.items[0].snippet.thumbnails.default.url)
                     this.setState({
                         videos: res.data.items
                     })
@@ -78,17 +79,18 @@ class HomePage extends Component {
 
                 <div>
                     {videos.map((el, index) => {
-                        return <YouTube 
-                        onReady = {this.onReady}
-                        key = {index} 
-                        videoId = {el.id.videoId} 
-                        opts = {opts} 
-                       />
-                        // <YouTubeVid 
-                        // title = {el.snippet.title}
-                        // url = {el.snippet.thumbnails.default.url}
-                        // desc = {el.snippet.desc}
-                        // key = {index}/>
+                    //     return <YouTube 
+                    //     onReady = {this.onReady}
+                    //     key = {index} 
+                    //     videoId = {el.id.videoId} 
+                    //     opts = {opts} 
+                    //    />
+                        return <YouTubeVid 
+                        title = {el.snippet.title}
+                        url = {el.snippet.thumbnails.default.url}
+                        videoId = {el.id.videoId}
+                        desc = {el.snippet.desc}
+                        key = {index}/>
 
                     })}
                 </div>
