@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: grid;
 }
 
 
@@ -10,6 +11,11 @@ input{
   border: none;
   margin-right: 16px;
   border: 1px solid black;
+
+}
+
+.img{
+  grid-template-rows: 50% 50%;
 
 }
 

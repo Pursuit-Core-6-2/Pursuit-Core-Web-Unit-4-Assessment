@@ -5,8 +5,8 @@ import Youtube from 'react-youtube'
 
 
 class Videos extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             videos: null,
             comment: " ",
@@ -14,20 +14,22 @@ class Videos extends Component {
         }
     }
 
-    async componentDidMount() {
-        const { videoId } = this.props.match.params
-        console.log("ID", videoId)
-        try {
-            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=${videoId}`
-            const res = await axios.get(url)
-            console.log(res.data.items)
-            this.setState({
-                videos: videoId
-            })
-        } catch (err) {
-            console.log("Error:", err)
-        }
-    }
+    // async componentDidMount() {
+    //     const { videoId } = this.props.match.params
+    //     console.log("ID", videoId)
+    //     try {
+    //         const params = `part=snippet&q=${videoId}&key=${API_KEY}`
+    //         const url = `https://www.googleapis.com/youtube/v3/search?${params}`
+            
+    //         const res = await axios.get(url)
+    //         console.log(res.data.items[0])
+    //         this.setState({
+    //             videos: res.data.items[0]
+    //         })
+    //     } catch (err) {
+    //         console.log("Error:", err)
+    //     }
+    // }
 
     // handleChange = (e) => {
     // this.setState({
@@ -36,21 +38,23 @@ class Videos extends Component {
     // })
     // }
 
-    handleFormSubmit = (e) => {
-        e.preventDefault()
-        this.setState({
-            name: e.target.value,
-            comment: e.target.value,
-        })
+    // handleFormSubmit = (e) => {
+    //     e.preventDefault()
 
-    }
+    //     this.setState({
+    //         name: e.target.value,
+    //         comment: e.target.value,
+    //     })
+
+    // }
 
     render() {
+        const { videoId } = this.props.match.params
         const { videos, name, comments } = this.state;
-        // const opts = {
-        //     height: '390',
-        //     width: '640',  
-        // }
+        const opts = {
+            height: '390',
+            width: '640',  
+        }
 
         if (!videos) {
             return <p> no videos</p>
@@ -59,14 +63,15 @@ class Videos extends Component {
        
         return (
             <div>
+                <h1>Video</h1>
                 <Youtube
-                    videos={videos}
-                    // opts ={opts}
+                    videoId={videoId}
+                    opts ={opts}
                 />
 
                 <form onSubmit={this.handleFormSubmit}>
-                    <input type="text" placeholder="Enter Name" value={name}>Name:</input>
-                    <input type="text" placeholder="Enter Comment" value={comments}>Comment:</input>
+                    <input type="text" value={name}>Name:</input>
+                    <input type="text"  value={comments}>Comment:</input>
                     <input type="submit" />
                 </form>
             </div>

@@ -6,8 +6,8 @@ import './CSS/Home.css'
 
 
 class Home extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             searchVids: '',
             videos: [],
@@ -28,8 +28,8 @@ class Home extends Component {
         const { searchVids } = this.state
         // console.log("searching for:", searchVids)
         try {
-            const params = `&key=${API_KEY}&q=${searchVids}`
-            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet${params}`
+            const params = `part=snippet&q=${searchVids}&type=video&key=${API_KEY}&maxResults=8`
+            const url = `https://www.googleapis.com/youtube/v3/search?${params}`
             let res = await Axios.get(url)
             console.log(res.data.items)
             this.setState({
@@ -72,7 +72,6 @@ class Home extends Component {
 
                     return (
                         <Link to={`/videos/${video.id.videoId}`} key={video.snippet.videoId}>
-
                             <img className="img" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
                             <p> {video.snippet.title}</p>
                         </Link>
@@ -80,6 +79,8 @@ class Home extends Component {
                     )
                 })
             }</div >
+
+            // <videoThumbnail video={video}/>
             )
         }
     }
