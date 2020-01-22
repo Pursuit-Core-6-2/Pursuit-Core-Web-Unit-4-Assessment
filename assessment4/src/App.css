@@ -4,7 +4,8 @@
 }
 
 .navbar {
- color: red;
- z-index: 0; 
+border: 1px solid black;
+padding: 5px;
+background-color: red;
 }
 

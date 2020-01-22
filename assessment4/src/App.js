@@ -9,11 +9,11 @@ import AboutPage from './Components/AboutPage';
 
 class App extends React.Component {
  
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
    
-  }
+  // }
 
   
   render() {
@@ -21,24 +21,22 @@ class App extends React.Component {
       <div className="App">
       
         <nav className='navbar'>
-           <Link to='/youtube'>Youtube</Link>
+          <Link to='/Youtube'>Youtube</Link> {" "}
           <Link to="/">Home</Link> {" "}
-          <Link to="/video">Video</Link> {" "}
-          <Link to="/about">About</Link>  {" "}
-          {/* <Link to='/youtube'>Youtube</Link> */}
+          {/* <Link to="/video">Video</Link> {" "} */}
+          <Link to="/about">About</Link>  
+          
         </nav>
 
         <Switch>
           <Route exact path= "/" component={HomePage}/>
-          <Route path="/video" component={VideoPage}/>
+          <Route path="/video/:id" component={VideoPage}/>
           <Route path="/about" component={AboutPage}/>
           <Route></Route>
            
         </Switch>
 
-         {/* <HomePage
-      results={this.props.results}
-    /> */}
+      
 
       </div>
     );

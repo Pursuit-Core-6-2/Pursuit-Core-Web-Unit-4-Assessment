@@ -1,35 +1,41 @@
 import React from 'react';
-
-
-
+import { Link } from 'react-router-dom'
 
 class SearchResults extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            result: {}
+            result: {},
+          
         }
     }
 
-    
-
     render() {
-        const  {results, snippet} = this.props
-       
-        return(
-            <div>
-                {this.props.results.map(result=> {
-                     console.log('check', result.snippet.title)
-                    return(
-                        <div className='thumbnails'>
-                            <img src=                                 {result.snippet.thumbnails.high.url}></img>
-                            <p>{result.snippet.title}
-                            </p>
-                        </div>
-                    )
-                })}
-             </div>
-        )
+        const  { results, submitted} = this.props
+        console.log('results prop', results)
+        if (submitted === true) {
+            return (
+                <p>No Search Results Yet. Search for videos     here!
+                </p>
+            )
+        } else {
+
+            return(
+                <div>
+               
+                    {this.props.results.map(result=> {
+                        console.log('check', result.id.videoId)
+                        return(
+                            <Link to={`/video/${result.id.videoId}`}>
+                            <img src=                                 {result.snippet.thumbnails.high.url} alt=''></img>
+                            <p>{result.snippet.title}</p>
+                            </Link>
+                        )
+                     })}
+             
+                </div>
+            )
+        }
     }     
 }
 

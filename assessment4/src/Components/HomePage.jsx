@@ -3,6 +3,7 @@ import APIKey from '../Secrets'
 import SearchResults from './SearchResult'
 import axios from 'axios'
 
+
 class HomePage extends React.Component {
     constructor(props) {
         super(props)
@@ -10,7 +11,9 @@ class HomePage extends React.Component {
             results:[],
            snippet: 'snippet',
            search: '',
-            result: ''
+            // result: '',
+            video: '',
+            submitted: false
         }
     }
 
@@ -23,14 +26,14 @@ class HomePage extends React.Component {
         })
     }
 
-    handleFormSubmit = async (e, index) => {
+    handleFormSubmit = async (e) => {
         // const {list} = this.props
         e.preventDefault()
-        // const {index} = this.props
-        const { search, snippet } = this.state
-        console.log('form submitted', snippet)
+        const {result} = this.props
+        const { search, snippet} = this.state
+        console.log('form submitted', result)
 
-        let params = `?part=${snippet}&key=${APIKey}&q=${search}`
+        let params = `?part=${snippet}&type=video&key=${APIKey}&q=${search}`
         try {
             let searchUrl = `https://www.googleapis.com/youtube/v3/search/${params}`
             let response = await axios.get(searchUrl)
@@ -39,9 +42,10 @@ class HomePage extends React.Component {
             console.log('response', response.data.items)
             const data  = response.data.items
             
-            // console.log('data', data)
+            console.log('data', data)
             this.setState({
-                results: data
+                results: data,
+                submitted:true
             })
 
 
@@ -52,7 +56,8 @@ class HomePage extends React.Component {
 
 
     render() {
-        const { search, results} = this.state
+       
+        const { search, results, video} = this.state
         // console.log('results' , results)
         return(
             <div className='home'>
@@ -61,16 +66,21 @@ class HomePage extends React.Component {
                     <button>Search</button>
                     <p>No Search Results Yet. Search for videos here!</p>
 
-                       
                     <SearchResults
                         results={results}
-                    />  
-                    
+                        video={video}
+                    />
                 </form>
+                 
                
-                
             </div>
         )
+        
+    }
+
+    _onReady(event) {
+        // access to player in all event handlers via event.target
+        event.target.pauseVideo();
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const VideoPage = (props) => {
+
+const Youtube = (props) => {
     return ( 
         <div >
             <h1>Welcome</h1>
@@ -8,4 +9,4 @@ const VideoPage = (props) => {
     )
 }
 
-export default VideoPage;
+export default Youtube;
