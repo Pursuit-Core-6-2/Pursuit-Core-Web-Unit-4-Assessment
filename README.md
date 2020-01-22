@@ -6,11 +6,11 @@ Written during my Pursuit Unit 4 Assessment Exam, YouTube Abbreviated is a multi
 
 ### Tech
 + React.js
-+ Node.js
 + React-Router
 + React-YouTube
 + YouTube Developer API
 + Axios
++ Node.js
 + JavaScript / ECMAScript 6
 + HTML5
 + CSS3
