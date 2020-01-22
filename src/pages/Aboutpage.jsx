@@ -5,9 +5,11 @@ Aboutpage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-import React from 'react';
+    // external
+    import React from 'react';
 
-import './Aboutpage.css';
+    // local
+    import './Aboutpage.css';
 
 
 /* COMPONENT + EXPORT */

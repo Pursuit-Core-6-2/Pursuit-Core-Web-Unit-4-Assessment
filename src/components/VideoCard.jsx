@@ -5,12 +5,12 @@ VideoCard Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-// external
-import React from 'react';
-import { Link } from 'react-router-dom';
+    // external
+    import React from 'react';
+    import { Link } from 'react-router-dom';
 
     // local
-import './VideoCard.css';
+    import './VideoCard.css';
 
 
 /* COMPONENT */

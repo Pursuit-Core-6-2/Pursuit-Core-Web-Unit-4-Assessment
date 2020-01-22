@@ -20,7 +20,8 @@ APP MAIN Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* COMPONENT */
-function App() {
+const App = () => {
+
   return (
     <div className="App">
       <Route path={'/video/:id'} children={(props) => <NavBar {...props} />} />

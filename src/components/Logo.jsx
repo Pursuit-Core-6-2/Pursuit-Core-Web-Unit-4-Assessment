@@ -6,14 +6,14 @@ Logo Component | YouTube Abbreviated | Unit 4 Assessment
 
 /* IMPORTS */
     // external
-import React from 'react';
-import { Link } from 'react-router-dom';
+    import React from 'react';
+    import { Link } from 'react-router-dom';
 
     // local
-import './Logo.css';
+    import './Logo.css';
 
-const imgLogo = require('../assets/images/logo-top.png');
-const imgCirc = require('../assets/images/logo-circ.png');
+    const imgLogo = require('../assets/images/logo-top.png');
+    const imgCirc = require('../assets/images/logo-circ.png');
 
 
 /* COMPONENT */
