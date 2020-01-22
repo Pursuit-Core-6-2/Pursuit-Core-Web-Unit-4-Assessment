@@ -10,17 +10,19 @@ class VideoPage extends React.Component {
             nameVal:'',
             commentVal:'',
             videoId: props.match.params,
-            commentArray:[]
+            postArray:[]
         }
     }
 
-     handleSubmitForm(e){
+     handleSubmitForm = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
-       const {commentArray} = this.state
-    //    this.setState({
-    //        commentArray: commentArray.push()
-    //    })
+        const {nameVal, commentVal} = this.state
+       const {postArray} = this.state
+       postArray.push({nameVal: nameVal, commentVal: commentVal})
+       this.setState({
+           postArray: postArray
+       })
+       console.log(postArray)
      }
     handleName = (e) => {
         console.log(e.target.value)
@@ -46,22 +48,28 @@ class VideoPage extends React.Component {
             const key = apiKey
             const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${key}`
             const data = await axios.get(url)
-            // const data2 = await axios.get(url2)
             console.log(data)
         }catch(error){
             console.log('err',error)
         }  
     }
     render(){
-        const {nameVal, commentVal} = this.state
+        const {nameVal, commentVal, postArray} = this.state
         const {videoId} = this.props.match.params
+        const mapComments = postArray.map(post => {
+            return(
+                <div>
+                    <h3>{post.nameVal}</h3>
+                    <p>{post.commentVal}</p>
+                </div>
+            )
+        })
         return(
             <>
             <Youtube
                 videoId = {videoId}
                 onReady = {this.onReady}
             />
-            {/* <Video videoId ={videoId}/> */}
             <div>
                 <form onSubmit={this.handleSubmitForm}>
                     <label>
@@ -78,9 +86,9 @@ class VideoPage extends React.Component {
                     <input type='submit'></input>
                 </form>
             </div>
-                <ul>
-                    
-                </ul>
+            <div>
+                {mapComments}
+            </div>   
             </>
         )
     }    

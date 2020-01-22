@@ -1,12 +1,12 @@
 import React from 'react'
-import Video from './Video'
+// import Video from './Video'
 import axios from 'axios'
 import {Switch, Route, Link} from 'react-router-dom'
 import apiKey from '../secrets'
 
 class HomePage extends React.Component {
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state = {
             searchValue: '',
             message: 'No results. Enter a search term query',
@@ -34,7 +34,6 @@ class HomePage extends React.Component {
 
             this.setState({
                 searchResults: items,
-                // videoId: items.id.videoId
             })
         }catch(error){
             console.log('err', error)
