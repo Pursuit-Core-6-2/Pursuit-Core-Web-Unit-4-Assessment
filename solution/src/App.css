@@ -45,6 +45,7 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
+    color: white
 };
 .nav-link {
   float: right;

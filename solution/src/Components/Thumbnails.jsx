@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Video from './Video.jsx'
 import axios from 'axios';
 import apiKey from '../secrets.js';
+import { Link } from 'react-router-dom'
 
 class Thumbnail extends Component {
     constructor(props) {
@@ -24,22 +25,24 @@ class Thumbnail extends Component {
     };
     render() {
         const { url, key, name, id, display } = this.state;
-        if(display) {
-            return(
+        if (display) {
+            return (
                 <div>
-                    <Video videoId={id}/>
+                    <Video videoId={id} />
                 </div>
             )
-        } 
+        }
         else {
-        return(
-            <div className = 'thumbnail-component'>
-                <img src={url} alt={key} id={id} onClick = {this.handleThumbnailClick}/>
-                <br />
-                <p className = "video-title"> {name} </p>
-            </div>
-        )
-    }
+            return (
+                <div className='thumbnail-component'>
+                    <Link to={`/video/${id}`}>
+                        <img src={url} alt={key} id={id} onClick={this.handleThumbnailClick} />
+                        <br />
+                        <p className="video-title"> {name} </p>
+                    </Link>
+                </div>
+            )
+        }
     }
 };
 export default Thumbnail;
