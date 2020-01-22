@@ -8,7 +8,7 @@ class Video extends Component {
             id: props.match.params.videoId,
             comments: [],
             name: "",
-            comment: ""
+            comment: "",
         }
 
     }
@@ -30,15 +30,33 @@ class Video extends Component {
     }
 
     render() {
+        let {name, comment} = this.state
+
+
         return (
             <div>
                 <Youtube
-                    videoId={this.state.id}
-                    opts={this.options()}
-                    onReady={this._onReady} />
+                videoId={this.state.id}
+                opts={this.options()}
+                onReady={this._onReady} />
+
+                <div>
+                    <form>
+                        <label htmlFor = "name">Name</label><br/>
+                        <input  id = "name"   
+                        type = "text" 
+                        placeholder = "your name"
+                        value = {name}/><br/>
+                        
+                        <label htmlFor = "comment">Comment</label><br/>
+                        <input id = "comment" 
+                        type = "text" 
+                        placeholder = "your comment"
+                        value = {comment}/>
+                    </form>
+                </div>
 
             </div>
-
         )
     }
 

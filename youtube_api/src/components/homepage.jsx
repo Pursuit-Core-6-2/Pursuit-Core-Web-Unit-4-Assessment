@@ -1,9 +1,6 @@
 import React, { Component } from "react"
-import {Route} from "react-router-dom"
-import Video from "./video"
 import secrets from "./secrets"
 import axios from "axios"
-import YouTube from 'react-youtube'
 import ThumbNail from './thumbnail'
 
 class HomePage extends Component {
@@ -40,9 +37,6 @@ class HomePage extends Component {
                     this.setState({
                         videos: res.data.items
                     })
-
-
-
                 })
         } catch (err) {
             console.log(err)
@@ -71,12 +65,6 @@ class HomePage extends Component {
 
                 <div>
                     {videos.map((el, index) => {
-                    //     return <YouTube 
-                    //     onReady = {this.onReady}
-                    //     key = {index} 
-                    //     videoId = {el.id.videoId} 
-                    //     opts = {opts} 
-                    //    />
                         return <ThumbNail 
                         title = {el.snippet.title}
                         url = {el.snippet.thumbnails.default.url}
@@ -86,6 +74,7 @@ class HomePage extends Component {
 
                     })}
                 </div>
+
             </div>
         )
     }
