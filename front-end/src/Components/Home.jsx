@@ -47,7 +47,7 @@ class Home extends Component {
         const { selectedVideo, videos } = this.state
 
         return (
-            <Grid justify='center' container spacing={10}>
+            <Grid justify='center' spacing={10}>
                 <Grid container justify="center" spacing={10} item xs={12}>
                         <Grid item xs={10}>
                             <Search onFormSubmit={this.handleSubmit} />
