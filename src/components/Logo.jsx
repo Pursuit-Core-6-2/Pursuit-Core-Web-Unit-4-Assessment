@@ -20,7 +20,18 @@ Logo Component | YouTube Abbreviated | Unit 4 Assessment
 const Logo = () => {
 
   return(
-    <Link className="logo-nav-link" to={"/"}>
+    <Link 
+      className="logo-nav-link" 
+      to={{
+          pathname: "/",
+          state: {
+            searchTxt: "",
+            errorMessage: "",
+            results: [],
+            isBeginning: true
+          }
+      }} 
+    >
       <div className="logo-box">
         <img src={imgCirc} className="logocirc-img" alt="YouTube Abbreviated" />
         <img src={imgLogo} className="logo-img" alt="YouTube Abbreviated" />

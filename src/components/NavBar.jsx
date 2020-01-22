@@ -58,7 +58,9 @@ export default class NavBar extends Component {
     return(
       <ul className="nav-bar">
         <Logo />
-        <NavLink className="nav-link" exact to={{
+        <NavLink 
+          className="nav-link" 
+          exact to={{
               pathname: "/",
               state: {
                 searchTxt: "",
@@ -66,7 +68,8 @@ export default class NavBar extends Component {
                 results: [],
                 isBeginning: true
               }
-        }} >Home</NavLink>
+          }} 
+        >Home</NavLink>
         <NavLink className="nav-link" to={"/about"}>About</NavLink>
         <Route path={"/video/*"} render={ () => {
             return (
