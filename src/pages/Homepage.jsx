@@ -5,11 +5,10 @@ Homepage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-// external
+    // external
     import React, { Component } from 'react';
-    // import { Switch, Route } from 'react-router-dom';
 
-// local
+    // local
     import './Homepage.css';
     import VideoCard from '../components/VideoCard';
 
@@ -24,10 +23,6 @@ export default class Homepage extends Component {
     errorMessage: "",
     results: [],
     isBeginning: true
-  }
-  hardData ={
-    msgWelcome: <p className="result-response">Search for videos above!</p>,
-    msgEmpty: <p className="result-response">Sorry, no search results found. Try your search again above.</p>
   }
 
 
@@ -76,7 +71,6 @@ export default class Homepage extends Component {
 
   render() {
     const { searchTxt, errorMessage, results, isBeginning } = this.state;
-    const { msgWelcome, msgEmpty } = this.hardData;
 
     let listResults = null;
     if (results.length) {
@@ -100,9 +94,9 @@ export default class Homepage extends Component {
 
     let showing = null;
     if (isBeginning) {
-      showing = msgWelcome;
+      showing = <p className="result-response">Search for videos above!</p>;
     } else if (!results.length) {
-      showing = msgEmpty;
+      showing = <p className="result-response">Sorry, no search results found. Try your search again above.</p>;
     } else {
       showing = listResults;
     }
