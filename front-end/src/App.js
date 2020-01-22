@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
-// import Video from './Components/VideoDetail';
 import About from './Components/About';
 import VideoDetail from './Components/VideoDetail';
 

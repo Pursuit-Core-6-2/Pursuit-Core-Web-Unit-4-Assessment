@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Search from './Search';
+import axios from 'axios'
 // import VideoDetail from './VideoDetail';
 import VideoList from './VideoList';
-import YoutubeAPI from '../axiosAPI'
 import API_KEY from '../secrets'
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
     state = {
@@ -19,7 +19,8 @@ class Home extends Component {
     }
 
     handleSubmit = async (searchTerm) => {
-        const response = await YoutubeAPI.get('search', {
+        const url = `https://www.googleapis.com/youtube/v3/search?`
+        const response = await axios.get(url, {
             params: {
                 part: 'snippet',
                 maxResults: 8,
@@ -32,16 +33,18 @@ class Home extends Component {
             videos: response.data.items,
             selectedVideo: response.data.items[0]
         })
+        console.log("state2", this.state.selectedVideo)
+
     }
 
     onVideoSelect = (video) => {
         console.log("Working", video)
         this.setState({
-            selectedVideo: video
+            selectedVideo: video.id.videoId
         })
         // <VideoDetail video={selectedVideo} />
-
-        return <Redirect to='/video' video={this.selectedVideo} />
+        console.log("state", this.state.selectedVideo)
+        // return <Redirect to='/video' video={this.selectedVideo} />
     }
 
     render() {
