@@ -64,7 +64,7 @@ export default class NavBar extends Component {
             return (
               <li className="now-playing">
                 <div className="now-playing-label">
-                  Now Playing:
+                  Now Playing
                 </div>
                 {nowPlayingTitle}
               </li>

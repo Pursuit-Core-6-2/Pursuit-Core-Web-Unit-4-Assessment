@@ -30,6 +30,10 @@ ul.nav-bar {
   color: white;
 }
 
+.nav-link:hover, .nav-link:active {
+  color: #48c3ff;
+}
+
 .nav-link.active:link, .nav-link.active:visited {
   color: dodgerblue;
   border-top: solid 1px red;
@@ -37,5 +41,20 @@ ul.nav-bar {
 }
 
 .now-playing {
-  color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  color: #ffc107;
+}
+
+.now-playing-label {
+  margin: 0 11px 0 33px;
+  padding: 3px 6px 5px 6px;
+  border-top: solid 1px red;
+  border-bottom: solid 1px red;
+  
+  color: dodgerblue;
 }
