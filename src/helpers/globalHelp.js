@@ -22,7 +22,6 @@ const processInput = (input, descriptionString) => {
   //     console.log("You're not supposed to be here.");
   //   break;
   // }
-
   return output;
 }
 

@@ -6,20 +6,14 @@ Homepage Component | YouTube Abbreviated | Unit 4 Assessment
 
 /* IMPORTS */
     // external
-import React, { Component } from 'react';
-// import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+    import React, { Component } from 'react';
 
     // local
-import myKey from '../secrets.js';
-import './Homepage.css';
-import VideoCard from '../components/VideoCard';
+    import './Homepage.css';
+    import VideoCard from '../components/VideoCard';
 
-const {
-  processInput
-} = require('../helpers/globalHelp.jsx');
-
-
+    import { getApiSearch } from '../helpers/apiComm.js';
+    const { processInput } = require('../helpers/globalHelp.js');
 
 
 /* COMPONENT + EXPORT */
@@ -30,9 +24,12 @@ export default class Homepage extends Component {
     results: [],
     isBeginning: true
   }
-  hardData ={
-    msgWelcome: <p className="result-response">Search for videos above!</p>,
-    msgEmpty: <p className="result-response">Sorry, no search results found. Try your search again above.</p>
+
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.location.state && !prevState.isBeginning) {
+      this.setState(this.props.location.state);
+    }
   }
 
 
@@ -50,30 +47,23 @@ export default class Homepage extends Component {
           errorMessage: payload
       });
     } else {
+      this.refs.btnSearch.blur();
       this.getSearchResults(payload);
     }
   }
 
   handleClear = (e) => {
     e.preventDefault();
+    this.refs.btnClear.blur();
     this.setState({ searchTxt: "" });
   }
 
 
   getSearchResults = async (search) => {
-    const baseUrl = `https://www.googleapis.com/youtube/v3/search`;
-    const prepParams = `?part=snippet&key=${myKey}&maxResults=8`;
-    const prefixSearch = `&q=`;
-    const response = await axios.get(
-      baseUrl +
-      prepParams +
-      prefixSearch +
-      search
-    );
-    // console.log(response.data.items);
+    const results = await getApiSearch(search);
     this.setState({
         errorMessage: "",
-        results: response.data.items,
+        results: results,
         isBeginning: false
     });
   }
@@ -81,12 +71,10 @@ export default class Homepage extends Component {
 
   render() {
     const { searchTxt, errorMessage, results, isBeginning } = this.state;
-    const { msgWelcome, msgEmpty } = this.hardData;
 
     let listResults = null;
-
     if (results.length) {
-      listResults = results.map(result => {
+      listResults = results.map((result, i) => {
           const videoId = result.id.videoId;
           const title = result.snippet.title;
           const desc = result.snippet.description;
@@ -94,7 +82,7 @@ export default class Homepage extends Component {
 
           return (
             <VideoCard 
-              key={videoId} 
+              key={i} 
               videoId={videoId} 
               title={title} 
               desc={desc} 
@@ -106,9 +94,9 @@ export default class Homepage extends Component {
 
     let showing = null;
     if (isBeginning) {
-      showing = msgWelcome;
+      showing = <p className="result-response">Search for videos above!</p>;
     } else if (!results.length) {
-      showing = msgEmpty;
+      showing = <p className="result-response">Sorry, no search results found. Try your search again above.</p>;
     } else {
       showing = listResults;
     }
@@ -123,10 +111,9 @@ export default class Homepage extends Component {
             value={searchTxt} 
             onChange={this.handleChange} 
             placeholder="Search..." 
-            required 
           />
-          <button className="btn-search">Search</button>
-          <button className="btn-clear" onClick={this.handleClear}>Clear</button>
+          <button className="btn-search" ref="btnSearch">Search</button>
+          <button className="btn-clear" onClick={this.handleClear} ref="btnClear">Clear</button>
         </form>
 
         <div className="msg-error">{errorMessage}</div>

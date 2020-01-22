@@ -1,4 +1,26 @@
-# Unit 4 Assessment
+# YouTube Abbreviated (a React [unit assessment] app)
+
+Written during my Pursuit Unit 4 Assessment Exam, YouTube Abbreviated is a multiple component React app I developed that a user can use to search YouTube results, watch a result, and comment locally and temporarily on.
+
+![YouTube Abbreviated Screen Capture](./readme/screencap_ytabbreviated.png)
+
+### Tech
++ React.js
++ Node.js
++ React-Router
++ React-YouTube
++ YouTube Developer API
++ Axios
++ JavaScript / ECMAScript 6
++ HTML5
++ CSS3
++ Git / Github
+
+---
+
+---
+
+## Unit 4 Assessment
 
 For this Assessment you will be building a simple YouTube client application. Your app will allow users to search for videos, watch a video and leave a comment for it.
 

@@ -5,13 +5,19 @@ Homepage Page Component Styling | YouTube Abbreviated | Unit 4 Assessment
 
 
 .form-homesearch {
-  margin: 22px auto;
+  margin: 44px auto 22px auto;
   width: 60vw;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .input-search {
   width: 80%;
-  margin: 45px auto;
+  margin: 11px auto;
 }
 
 .result-response {
@@ -26,5 +32,5 @@ Homepage Page Component Styling | YouTube Abbreviated | Unit 4 Assessment
   justify-content: flex-start;
   align-items: center;
 
-  margin: 33px 13%;
+  margin: 3px 13% 33px 13%;
 }

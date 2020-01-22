@@ -6,28 +6,80 @@ NavBar Component | YouTube Abbreviated | Unit 4 Assessment
 
 /* IMPORTS */
     // external
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import axios from 'axios';
+    import React, { Component } from 'react';
+    import { NavLink, Route } from 'react-router-dom';
 
     // local
-import './NavBar.css';
+    import './NavBar.css';
 
-import Logo from './Logo';
+    import { getApiOneSnippet } from '../helpers/apiComm.js';
+
+    import Logo from './Logo';
 
 
-/* COMPONENT */
-const NavBar = () => {
+/* COMPONENT & EXPORT */
+export default class NavBar extends Component {
+  state = {
+    nowPlayingTitle: ""
+  }
 
-  return(
-    <ul className="nav-bar">
-      <Logo />
-      <NavLink className='nav-link' exact to={`/`}>Home</NavLink>
-      <NavLink className='nav-link' to={`/about`}>About</NavLink>
-    </ul>
-  );
+  async componentDidMount() {
+    await this.getNowPlaying();
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    const prevMatch = prevProps.match;
+    const currMatch = this.props.match;
+    if (prevMatch !== currMatch) {
+      await this.getNowPlaying();
+    }
+  }
+
+
+  getNowPlaying = async () => {
+    let title = "";
+    if (this.props.match) {
+      try {
+        const videoId = this.props.match.params.id;
+        const snippet = await getApiOneSnippet(videoId);
+        title = snippet.title;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    this.setState({ nowPlayingTitle: title });
+  }
+
+
+  render () {
+    const { nowPlayingTitle } = this.state;
+
+
+    return(
+      <ul className="nav-bar">
+        <Logo />
+        <NavLink className="nav-link" exact to={{
+              pathname: "/",
+              state: {
+                searchTxt: "",
+                errorMessage: "",
+                results: [],
+                isBeginning: true
+              }
+        }} >Home</NavLink>
+        <NavLink className="nav-link" to={"/about"}>About</NavLink>
+        <Route path={"/video/*"} render={ () => {
+            return (
+              <li className="now-playing">
+                <div className="now-playing-label">
+                  Now Playing
+                </div>
+                {nowPlayingTitle}
+              </li>
+            );
+          }
+        } />
+      </ul>
+    );
+  }
 }
-
-
-/* EXPORT */
-export default NavBar;

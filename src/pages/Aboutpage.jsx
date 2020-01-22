@@ -5,9 +5,11 @@ Aboutpage Component | YouTube Abbreviated | Unit 4 Assessment
 
 
 /* IMPORTS */
-import React from 'react';
+    // external
+    import React from 'react';
 
-import './Aboutpage.css';
+    // local
+    import './Aboutpage.css';
 
 
 /* COMPONENT + EXPORT */
@@ -26,16 +28,25 @@ const Aboutpage = () => {
           result's own page which allows comments to be submitted and saved 
           (temporarily for now).
         </p>
+
+        <p style={{color: "#ccc"}}>
+          The logo is a combined-on-load duo of pngs obtained from PNGGuru. The
+          fonts of Roboto--which YouTube primarily uses currently, and Open Sans 
+          are used here. No css libraries were implemented because there was no 
+          time to incorporate them within the time alloted.
+        </p>
           
         <p>
           YouTube Abbreviated is at it's core a kick-a** React app developed
           under the shadow of the Unit 4 Assessment Component of the famed
-          Pursuit 
-          real-life app.
+          Pursuit Full-Stack Web Development Fellowship real-life app.
         </p>
         
-        <p>
-          Regards,<br />
+        <p style={{marginTop: "28px"}}>
+          Regards,
+        </p>
+
+        <p style={{marginTop: "14px"}}>
           <strong>Joseph P. Pasaoa, developer</strong>
         </p>
 
