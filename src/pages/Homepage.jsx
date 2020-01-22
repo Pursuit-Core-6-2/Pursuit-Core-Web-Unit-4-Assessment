@@ -31,6 +31,13 @@ export default class Homepage extends Component {
   }
 
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.location.state && !prevState.isBeginning) {
+      this.setState(this.props.location.state);
+    }
+  }
+
+
   handleChange = (e) => {
     this.setState({
         [e.target.name]: e.target.value

@@ -58,7 +58,15 @@ export default class NavBar extends Component {
     return(
       <ul className="nav-bar">
         <Logo />
-        <NavLink className="nav-link" exact to={"/"}>Home</NavLink>
+        <NavLink className="nav-link" exact to={{
+          pathname: "/",
+          state: {
+            searchTxt: "",
+            errorMessage: "",
+            results: [],
+            isBeginning: true
+          }
+        }}>Home</NavLink>
         <NavLink className="nav-link" to={"/about"}>About</NavLink>
         <Route path={"/video/*"} render={ () => {
             return (
