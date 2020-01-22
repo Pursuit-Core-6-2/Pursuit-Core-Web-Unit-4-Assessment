@@ -55,7 +55,7 @@ class HomePage extends Component {
                   
         
         
-        console.log(YouTube)
+        // console.log(YouTube)
         
         return (
             <div id="search-field">
@@ -86,9 +86,6 @@ class HomePage extends Component {
 
                     })}
                 </div>
-
-                <Route path = "/video/:videoId" Component = {Video}/>
-
             </div>
         )
     }

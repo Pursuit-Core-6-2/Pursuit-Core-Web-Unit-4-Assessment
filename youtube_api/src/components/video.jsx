@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Youtube from 'react-youtube'
-import secrets from "./secrets"
+// import secrets from "./secrets"
 class Video extends Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             id: props.match.params.videoId,
             comments: [],
@@ -33,8 +33,8 @@ class Video extends Component {
         return (
             <div>
                 <Youtube
-                    videoId={this.state.videoId}
-                    // opts={this.options()}
+                    videoId={this.state.id}
+                    opts={this.options()}
                     onReady={this._onReady} />
 
             </div>
