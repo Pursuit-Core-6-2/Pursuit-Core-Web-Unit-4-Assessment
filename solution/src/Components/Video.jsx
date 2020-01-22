@@ -1,30 +1,17 @@
-//Search for videos and display results
+// //Search for videos and display results
 
-import React from 'react'
-import axios from 'axios'
+// import React from 'react'
+// import axios from 'axios'
 
-
-class Video extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            
-        }
-    }
-
-    render(){
-        return(
-            <>
-            <div>
-                
-            </div>
-            <div>
-                
-            </div>
-            </>
-        )
-    }
-}
+// const Video = (props) => {
+//     const {videoId, title} = props
+//     return (
+//         <div>
+//             <p>{title}</p>
+//             <p>{videoId}</p>
+//         </div>
+//     )
+// }
 
 
 
@@ -34,6 +21,4 @@ class Video extends React.Component {
 
 
 
-
-
-export default HomePage
+// export default Video

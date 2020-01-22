@@ -1,15 +1,16 @@
 import React from 'react'
+import Video from './Video'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Switch, Route, Link} from 'react-router-dom'
 import apiKey from '../secrets'
 
 class HomePage extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             searchValue: '',
             message: 'No results. Enter a search term query',
-            searchResults: [],
+            searchResults: [],  
         }
     }
 
@@ -29,6 +30,8 @@ class HomePage extends React.Component {
             const data = await axios.get(url)
             const items = data.data.items
             console.log(items)
+            console.log(items[0].id.videoId)
+
             this.setState({
                 searchResults: items,
                 // videoId: items.id.videoId
@@ -41,7 +44,6 @@ class HomePage extends React.Component {
 
     render(){
         const {searchValue, searchResults} = this.state
-
         return(
             <>
             <div>

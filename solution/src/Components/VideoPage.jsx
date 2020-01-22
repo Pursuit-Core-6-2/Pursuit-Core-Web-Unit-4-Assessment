@@ -9,14 +9,18 @@ class VideoPage extends React.Component {
         this.state = {
             nameVal:'',
             commentVal:'',
-            videoId: this.props.videoId,
+            videoId: props.match.params,
             commentArray:[]
         }
     }
 
      handleSubmitForm(e){
         e.preventDefault()
-       
+        console.log(e.target.value)
+       const {commentArray} = this.state
+    //    this.setState({
+    //        commentArray: commentArray.push()
+    //    })
      }
     handleName = (e) => {
         console.log(e.target.value)
@@ -35,11 +39,12 @@ class VideoPage extends React.Component {
     onReady = (e) => {
         e.target.pauseVideo()
     }
-    componentDidMount = async () => {
-        const {id} = this.props.match.params
+
+    async componentDidMount(){
+        const {videoId} = this.props.match.params
         try{
             const key = apiKey
-            const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${key}`
+            const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${key}`
             const data = await axios.get(url)
             // const data2 = await axios.get(url2)
             console.log(data)
@@ -49,13 +54,14 @@ class VideoPage extends React.Component {
     }
     render(){
         const {nameVal, commentVal} = this.state
-        const {id} = this.props.match.params
+        const {videoId} = this.props.match.params
         return(
             <>
             <Youtube
-                videoId = {this.props.videoId}
+                videoId = {videoId}
                 onReady = {this.onReady}
             />
+            {/* <Video videoId ={videoId}/> */}
             <div>
                 <form onSubmit={this.handleSubmitForm}>
                     <label>
@@ -65,7 +71,8 @@ class VideoPage extends React.Component {
                     <br></br>
                     <label>
                         Comment
-                        <input id='comment' type='input' value={commentVal} onChange={this.handleComment}></input>
+                        <input id='comment' type='input' value={commentVal} onChange={this.handleComment}>
+                        </input>
                     </label>
                     <br></br>
                     <input type='submit'></input>
