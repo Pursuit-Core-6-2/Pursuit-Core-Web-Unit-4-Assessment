@@ -45,12 +45,14 @@ export default class Homepage extends Component {
           errorMessage: payload
       });
     } else {
+      this.refs.btnSearch.blur();
       this.getSearchResults(payload);
     }
   }
 
   handleClear = (e) => {
     e.preventDefault();
+    this.refs.btnClear.blur();
     this.setState({ searchTxt: "" });
   }
 
@@ -108,10 +110,9 @@ export default class Homepage extends Component {
             value={searchTxt} 
             onChange={this.handleChange} 
             placeholder="Search..." 
-            required 
           />
-          <button className="btn-search">Search</button>
-          <button className="btn-clear" onClick={this.handleClear}>Clear</button>
+          <button className="btn-search" ref="btnSearch">Search</button>
+          <button className="btn-clear" onClick={this.handleClear} ref="btnClear">Clear</button>
         </form>
 
         <div className="msg-error">{errorMessage}</div>
