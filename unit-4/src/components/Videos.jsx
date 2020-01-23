@@ -87,13 +87,15 @@ class Videos extends Component {
                     <label>Comments:<input type="text" name="comment" onChange={this.handleChange} value={comment}/></label>
                     <input type="submit" />
                 </form>
-
+<hr/>
+<br/>
                 {multiArr.map(el => {
                     console.log(el.name)
                     return (
                     <>
                     <h4>{el.name}</h4> 
                     <p>{el.comment}</p>
+                    <hr/>
                     </>)
                 })}
             </div>
