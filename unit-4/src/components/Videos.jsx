@@ -10,7 +10,8 @@ class Videos extends Component {
         this.state = {
             videos: null,
             comment: " ",
-            name: " "
+            name: " ",
+            multiArr: []
         }
     }
 
@@ -31,36 +32,48 @@ class Videos extends Component {
     //     }
     // }
 
-    // handleChange = (e) => {
+    handleChange = (e) => {
+        // console.log(e.target)
+
+        this.setState({
+            [e.target.name]: e.target.value,
+            
+        })
     // this.setState({
-    //     name: e.target.value,
-    //     comment: e.target.value
+    //     name: e.target.name.value,
+    //     comment: e.target.comment.value
     // })
-    // }
+    }
 
-    // handleFormSubmit = (e) => {
-    //     e.preventDefault()
+    handleFormSubmit = (e) => {
+        e.preventDefault()
 
-    //     this.setState({
-    //         name: e.target.value,
-    //         comment: e.target.value,
-    //     })
+       const {name, comment, multiArr } = this.state
+       const nameComment = {name, comment}
 
-    // }
+       // before: multiArr = []
+       // after: multiArr = [nameComment]
+
+       this.setState({
+           name: '',
+           comment: '',
+           multiArr: [...multiArr, nameComment],
+       })
+    }
 
     render() {
         const { videoId } = this.props.match.params
-        const { videos, name, comments } = this.state;
+        const { multiArr, name, comment } = this.state;
+        console.log(multiArr)
+
         const opts = {
             height: '390',
             width: '640',  
         }
 
-        if (!videos) {
+        if (!videoId) {
             return <p> no videos</p>
         }
-        console.log("videoId", videos)
-       
         return (
             <div>
                 <h1>Video</h1>
@@ -70,10 +83,19 @@ class Videos extends Component {
                 />
 
                 <form onSubmit={this.handleFormSubmit}>
-                    <input type="text" value={name}>Name:</input>
-                    <input type="text"  value={comments}>Comment:</input>
+                    <label>Name:<input type="text" name="name" onChange={this.handleChange} value={name}/></label>
+                    <label>Comments:<input type="text" name="comment" onChange={this.handleChange} value={comment}/></label>
                     <input type="submit" />
                 </form>
+
+                {multiArr.map(el => {
+                    console.log(el.name)
+                    return (
+                    <>
+                    <h4>{el.name}</h4> 
+                    <p>{el.comment}</p>
+                    </>)
+                })}
             </div>
         )
     }
