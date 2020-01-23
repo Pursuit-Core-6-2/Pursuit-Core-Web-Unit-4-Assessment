@@ -2,7 +2,7 @@ import keys from '../secrets'
 import axios from 'axios'
 
 export const getVideoList = async (search) => {
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${search}&key=${keys}`;
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&type=video&q=${search}&key=${keys}`;
     const data = await axios.get(searchUrl)
     return data.data.items;
 }
