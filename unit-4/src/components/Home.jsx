@@ -59,6 +59,18 @@ class Home extends Component {
             )
             
      }else {
+        const thumbnailArr = videos.map(video => {
+            // console.log("videoID", video.id.videoId)
+
+        return (
+            <Link to={`/videos/${video.id.videoId}`} key={video.snippet.videoId}>
+                <img className="img" src={video.snippet.thumbnails.medium.url} alt={video.snippet.title} />
+                <p> {video.snippet.title}</p>
+            </Link>
+
+        )
+    })
+
             return (
                 <div className="vidList">
                 <form onSubmit={this.handleSubmit}>
@@ -66,19 +78,10 @@ class Home extends Component {
                     <input className="search" type="submit"  value="Search"/>
 
                 </form>
-            
-                {videos.map(video => {
-                        // console.log("videoID", video.id.videoId)
-
-                    return (
-                        <Link to={`/videos/${video.id.videoId}`} key={video.snippet.videoId}>
-                            <img className="img" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                            <p> {video.snippet.title}</p>
-                        </Link>
-
-                    )
-                })
-            }</div >
+            <div className = 'container'>
+                {thumbnailArr}
+            </div>
+</div >
 
             // <videoThumbnail video={video}/>
             )

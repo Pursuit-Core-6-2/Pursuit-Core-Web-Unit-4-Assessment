@@ -1,6 +1,6 @@
 .App {
+  display:block;
   text-align: center;
-  display: grid;
 }
 
 
@@ -14,12 +14,13 @@ input{
 
 }
 
-.img{
-  grid-template-rows: 50% 50%;
 
+
+.container{
+  margin-top: 15px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-
 
 /* nav input[type=text] {
   float: right;
