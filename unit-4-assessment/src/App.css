@@ -1,0 +1,62 @@
+
+/* NavBar CSS */
+.NavBar {
+    background-color: red;
+    height: 40px;
+    margin-bottom: 25px;
+}
+
+.NavBar ul{
+    display:inline;
+    list-style-type: none;
+    color: white;
+}
+
+.NavBar ul li{
+
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 15px;
+    margin-top:10px;
+}
+
+.NavBar ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.homePg{
+    display: block;
+    text-align:center;
+}
+
+form input {
+    width: 400px;
+    height: 14px;
+}
+
+form #searchBtn{
+    padding: 10px 10px;
+    background-color: red;
+    color:white;
+    border: none;
+}
+
+.noSearch{
+    margin-top:15px;
+    display: inline-block;
+    margin-bottom: 25px;
+    background-color: gray;
+    margin-bottom: 15px;
+    padding-inline-end: 35px;
+    padding-inline-start: 35px;
+}
+
+.container {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
