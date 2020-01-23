@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import {Switch, Route, Link} from "react-router-dom";
 import './App.css';
 import API_KEY from './Components/secrets'
 import Home from './Components/Home'
 import About from './Components/About'
 import axios from 'axios'
+import VideoPage from './Components/VideoPage'
 
 
 class App extends Component {
@@ -41,7 +37,6 @@ class App extends Component {
 
   handleSearch = async () => {
     let searchQuery = this.state.input
-    console.log(searchQuery)
     const {data:{items}} = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&maxResults=8&order=relevance&key=${API_KEY}`)
     console.log(items)
     this.setState({
@@ -50,7 +45,6 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    console.log('video id', event.target.id)
     let videoId = event.target.id
     this.setState({
       selectedVid: true,
@@ -65,7 +59,6 @@ class App extends Component {
     const {handleInput, handleSubmit, handleClick } = this
   return (
     <div className="App">
-     <Router>
       <div>
         <nav>
           <ul>
@@ -83,10 +76,11 @@ class App extends Component {
 
         <Switch>
           <div className="body">
-          <Route path="/about">
-            <About/>
+          <Route path="/about" component={About}>
           </Route>
-          <Route path="/">
+          <Route path="/video/:id" component={VideoPage}>
+          </Route>
+          <Route exact path="/">
             <Home 
             searchEntered = {searchEntered}
             resultsArr= {resultsArr}
@@ -100,7 +94,6 @@ class App extends Component {
           </div>
         </Switch>
       </div>
-    </Router>
     </div>
   );
   }

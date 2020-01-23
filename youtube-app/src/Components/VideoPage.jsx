@@ -13,7 +13,6 @@ class VideoPage extends Component {
     }
 
     onReady(event) {
-        // access to player in all event handlers via event.target
         event.target.pauseVideo();
       }
 
@@ -46,7 +45,7 @@ class VideoPage extends Component {
     const opts = {
       height: '390',
       width: '640',
-      playerVars: { // https://developers.google.com/youtube/player_parameters
+      playerVars: { 
         autoplay: 1
       }
     }
@@ -63,7 +62,8 @@ class VideoPage extends Component {
     return (
      <div className="videoDiv">
       <YouTube
-        videoId={this.props.selectedVidId}
+        // videoId={this.props.selectedVidId}
+        videoId={this.props.match.params.id}
         opts={opts}
         onReady={this.onReady}
       />

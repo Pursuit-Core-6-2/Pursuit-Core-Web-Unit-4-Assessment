@@ -2,7 +2,6 @@ import React from 'react'
 
 const VideoComments = (props) => {
     const {name, comment} = props
-    console.log('in video comments',props)
     return (
         <li>
             <div>

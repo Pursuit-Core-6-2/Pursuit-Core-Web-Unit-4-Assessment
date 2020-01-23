@@ -19,7 +19,7 @@ const Home = (props) => {
             />
         </div>
     )
-    } else {
+    } else if (selectedVid){
         return (
             <Results 
             searchEntered={searchEntered}
@@ -29,7 +29,7 @@ const Home = (props) => {
             selectedVidId={selectedVidId}
             />
         )
-    }
+    } 
  }
 
 
