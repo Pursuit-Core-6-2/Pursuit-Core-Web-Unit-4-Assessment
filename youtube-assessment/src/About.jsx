@@ -3,18 +3,8 @@ import './About.css';
 import { Switch, Route, Link} from "react-router-dom";
 
 
-class About extends React.Component{
-	constructor(props) {
-		super(props);
-		this.state = {
 
-		};
-	}
-
-
-
-
-	render() {
+const About = (props) => {
 		return(
 			<div>
 				<h1>About Page</h1>
@@ -23,7 +13,7 @@ class About extends React.Component{
 			</div>
 			) ;
 
-	}
+	
 }
 
 export default About;

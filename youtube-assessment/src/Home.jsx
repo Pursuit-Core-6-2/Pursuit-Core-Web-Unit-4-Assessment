@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Home.css';
 import { Switch, Route, Link} from "react-router-dom";
 import API_KEY from './secret';
@@ -6,44 +6,48 @@ import axios from 'axios';
 import Video from './Video';
 
 
-class Home extends React.Component{
-	constructor(props) {
-		super(props);
-		this.state = {
-			searchQuery: '',
-			results: undefined
-		};
+const Home = props => {
+
+	const [searchQuery, setSearchQuery] = useState('');
+	const [results, setResults] = useState(undefined);
+	const [sendSearch, setSendSearch] = useState(false);
+
+
+	const handleTextEntry = (e) => {
+		setSearchQuery(e.target.value);
 	}
 
-	handleTextEntry = (e) => {
-		this.setState({
-			searchQuery: e.target.value
-		});
-	}
-
-	handleFormSubmit = async (e) => {
-
+	const handleFormSubmission = (e) => {
 		e.preventDefault();
-		let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${this.state.searchQuery}&key=AIzaSyAFiPDILpEEiAgseAVth0fSyMaydvsrQpo`);
-		console.log(response);
-		let resultsArr = [];
-		for(let i = 0; i < response.data.items.length; i++){
-			let temp = {title: response.data.items[i].snippet.description, thumbnail: response.data.items[i].snippet.thumbnails.high.url, videoId: response.data.items[i].id.videoId};
-			resultsArr.push(temp);
-		}
-		this.setState({
-			results: resultsArr
-		});
-		console.log(resultsArr);
+		setSendSearch(true);
 	}
 
+	useEffect(() => {
+		const nestedFunc = async () => {
+		if(sendSearch){
+			console.log('lol');
+			let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${searchQuery}&key=AIzaSyAFiPDILpEEiAgseAVth0fSyMaydvsrQpo`);
+			console.log(response);
+			let resultsArr = [];
+			for(let i = 0; i < response.data.items.length; i++){
+				let temp = {title: response.data.items[i].snippet.description, thumbnail: response.data.items[i].snippet.thumbnails.high.url, videoId: response.data.items[i].id.videoId};
+				resultsArr.push(temp);
+			}
+
+			setResults(resultsArr);
+			setSendSearch(false);
+		}
+		}
+		nestedFunc();
+	}) 
 
 
 
-	render() {
-		let results =  <div className='centeredText'>No Search for videos above!</div>;
-		if(this.state.results){
-			results = this.state.results.map((elem) => {
+
+	
+		let resultsDis =  <div className='centeredText'>No Search for videos above!</div>;
+		if(results){
+			resultsDis = results.map((elem) => {
 				return(
 					<div className= 'resultsItem'>
 						<Link to={`/video/${elem.videoId}`}>
@@ -53,22 +57,22 @@ class Home extends React.Component{
 					</div>
 					);
 			});
+		
 		}
-
 		
 		return(
 			<div>
-				<form onSubmit = {this.handleFormSubmit}>
-					<input type='text' onChange ={this.handleTextEntry} placeholder='Search'/>
+				<form onSubmit = {handleFormSubmission}>
+					<input type='text' onChange ={handleTextEntry} placeholder='Search'/>
 					<button className ='myButton'type='submit'>Search</button>
 				</form>
 				<div className='resultsDiv'>
-					{results}
+					{resultsDis}
 				</div>
 			</div>
 			) ;
 
-	}
+	
 }
 
 export default Home;
