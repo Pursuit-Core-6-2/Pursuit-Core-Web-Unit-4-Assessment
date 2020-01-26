@@ -12,16 +12,17 @@ const Video = (props) => {
     }
 
     const handleNameAndComment = () => {
+        console.log(comment)
+        console.log(name)
         if (comment && name) {
             let obj = {
                 currentName: name,
                 currentComment: comment
             }
             setNameAndComment([...nameAndComment, obj])
-            setComment('')
-            setName('')
-            
         }
+        setName('')
+        setComment('')
     }
 
     const opts = {
@@ -43,8 +44,7 @@ const Video = (props) => {
             <input className="name" onChange={(e) => setName(e.target.value)} placeholder="Name..." value={name} />
             <label htmlFor="comment">Comment:</label>
             <input className="comment" onChange={(e) => setComment(e.target.value)} placeholder="..." value={comment} />
-            <input className="videoInputSubmit" type="submit" value="Submit" />
-            <button onClick={handleNameAndComment}>Submit</button>
+            <input className="videoInputSubmit" type="submit" value="Submit" onClick={handleNameAndComment} />
             <div className="commentsMade">{
                 nameAndComment.map(el => {
                     return <div>
@@ -57,7 +57,6 @@ const Video = (props) => {
 
         </div>
     );
-
 }
 
 export default Video;
