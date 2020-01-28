@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Form, Button, FormControl, Container, Row, Col } from 'react-bootstrap'
 import VideoPreview from './VideoPreview/VideoPreview'
-import API_KEY from '../secrets'
+import {API_KEY} from '../secrets'
 
 
 const Search = (props) => {
     const [search, setSearch] = useState('')
     const [results, setResults] = useState([])
     
-    handleInput = ({target: {value}}) => setSearch(value)
-    handleSubmit = async (event) => {
+    const handleInput = ({target: {value}}) => setSearch(value)
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        
+
         try {
             let {data: {items}} = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${search}&key=${API_KEY}&maxResults=8`)
             items = items.map(v => {
