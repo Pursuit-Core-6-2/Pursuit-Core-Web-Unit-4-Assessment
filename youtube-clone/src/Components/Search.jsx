@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Form, Button, FormControl, Container, Row, Col } from 'react-bootstrap'
-import Thumbnail from './Thumbnail'
 import VideoPreview from './VideoPreview/VideoPreview'
 import API_KEY from '../secrets'
 
 
-class Search extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            search: '',
-            results: []
-        }
-        console.log('Search constructor called', props)
-    }
+const Search = (props) => {
+    const [search, setSearch] = useState('')
+    const [results, setResults] = useState([])
     
-    componentDidMount = () => console.log("Search componentDidMount")
-    handleInput = ({target: {value}}) => this.setState({search: value})
+    handleInput = ({target: {value}}) => setSearch(value)
     handleSubmit = async (event) => {
         event.preventDefault()
+        
         try {
-            console.log("Inside the TRY")
-            let {data: {items}} = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${this.state.search}&key=${API_KEY}&maxResults=8`)
+            let {data: {items}} = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${search}&key=${API_KEY}&maxResults=8`)
             items = items.map(v => {
                 let date = new Date(v.snippet.publishedAt)
-                console.log(date.toString())
                 return (
                     <VideoPreview    
                         videoID={v.id.videoId}
@@ -36,33 +27,26 @@ class Search extends Component {
                     />
                 )
             })
-            console.log(items)
-            this.setState({results: items})
+            setResults(items)
         } catch(error) {
-            console.log("Inside the CATCH", error)
-            
+            console.log('error', error)
         }
     
-        console.log("form submitted", this.state.search)
-        this.setState({search: ''})
+        setSearch('')
     }
 
-
-    
-    render() {
-        return (
-            <>
-                <Form onSubmit={this.handleSubmit} style={{display: 'flex'}}>
-                    <FormControl type="search" placeholder="Search" value={this.state.search} onChange={this.handleInput} className="mr-sm-2" />
-                    <Button style={{backgroundColor: 'red', color: 'white', border: 'none'}} variant="outline-info">Search</Button>
-                </Form>
-                <br/>
-                <Container style={grid}>
-                    {this.state.results}
-                </Container>
-            </>
-        )
-    }
+    return (
+        <>
+            <Form onSubmit={handleSubmit} style={{display: 'flex'}}>
+                <FormControl type="search" placeholder="Search" value={search} onChange={handleInput} className="mr-sm-2" />
+                <Button style={{backgroundColor: 'red', color: 'white', border: 'none'}} variant="outline-info">Search</Button>
+            </Form>
+            <br/>
+            <Container style={grid}>
+                {results}
+            </Container>
+        </>
+    )
 }
 
 const grid = {
