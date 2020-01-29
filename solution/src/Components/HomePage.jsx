@@ -1,5 +1,5 @@
 import React from 'react'
-// import Video from './Video'
+import '../Styles/HomePage.css'
 import axios from 'axios'
 import {Switch, Route, Link} from 'react-router-dom'
 import apiKey from '../secrets'
@@ -45,13 +45,15 @@ class HomePage extends React.Component {
         const {searchValue, searchResults} = this.state
         return(
             <>
-            <div>
+            <div className='searchInput'>
                 <form onSubmit={this.getSearchResults}>
-                    <input type='search' onChange= {this.handleSearch} value={searchValue} placeholder='Search'/>
+                    <input id= 'searchBar'
+                    type='search' onChange= {this.handleSearch} value={searchValue} 
+                    placeholder='Search'/>
                     <input type='submit'/>
                 </form>  
             </div>    
-            <div>{  
+            <div className= 'searchResults'>{  
                 searchResults.map(item => {
                     return(
                         <Link to= {`/video/${item.id.videoId}`}>

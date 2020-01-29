@@ -1,0 +1,16 @@
+html, body {
+    align-content: center;
+    height: 100%;
+}
+
+.commentForm {
+    font-weight: bold;
+}
+
+  #commentSection {
+    width: 640px;
+    margin: auto;
+  }
+  
+  
+ 

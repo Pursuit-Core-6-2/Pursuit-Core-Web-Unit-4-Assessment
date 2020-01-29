@@ -58,7 +58,7 @@ class VideoPage extends React.Component {
         const {videoId} = this.props.match.params
         const mapComments = postArray.map(post => {
             return(
-                <div>
+                <div id= 'commentSection'>
                     <h3>{post.nameVal}</h3>
                     <p>{post.commentVal}</p>
                 </div>
@@ -70,7 +70,7 @@ class VideoPage extends React.Component {
                 videoId = {videoId}
                 onReady = {this.onReady}
             />
-            <div>
+            <div >
                 <form onSubmit={this.handleSubmitForm}>
                     <label>
                         Name:
@@ -86,7 +86,7 @@ class VideoPage extends React.Component {
                     <input type='submit'></input>
                 </form>
             </div>
-            <div>
+            <div >
                 {mapComments}
             </div>   
             </>

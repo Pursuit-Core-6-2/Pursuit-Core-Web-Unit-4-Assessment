@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 
 const NavBar = () => {
     return (
-    <div>
+    <div className>
         <nav>
             <h4>Youtube</h4>
             {/* <span>Click link to go to page</span> */}
