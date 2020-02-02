@@ -75,9 +75,12 @@ width:50px;
   height:20px;
 }
 
-.name, .comment,.videoInputSubmit, label  {
+.name, .comment, label, .singleName,.singleComment {
   padding-bottom: 10px;
   padding-top: 10px;
+  margin: 0px;
+  width: 640px;
+  display: flex;
 }
 
 .noResult{
@@ -88,7 +91,7 @@ width:50px;
 }
 
 
-.singlName, .singleComment{
+/* .singlName, .singleComment{
   margin-left: 22%;
   text-align: start;
   font-family:  Roboto, arial, sans-serif;
@@ -101,4 +104,15 @@ width:50px;
 }
 .singleComment{
   margin-top:0px;
+} */
+
+
+.singleCommentAndName, .videoLabelAndInput{
+  display: grid;
+  justify-content: center;
+  /* width: 640px; */
+  /* margin: 0px; */
+  margin-right: 0px;
+
 }
+

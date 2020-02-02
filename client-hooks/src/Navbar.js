@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom'
 
 function Navbar() {
+   
     return (
         <div className="navBar">
             <h1 className = "youtube">Youtube</h1>

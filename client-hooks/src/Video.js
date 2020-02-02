@@ -40,15 +40,20 @@ const Video = (props) => {
                 onReady={videoOnReady}
             />
 
-            <label htmlFor="name">Name:</label>
-            <input className="name" onChange={(e) => setName(e.target.value)} placeholder="Name..." value={name} />
-            <label htmlFor="comment">Comment:</label>
-            <input className="comment" onChange={(e) => setComment(e.target.value)} placeholder="..." value={comment} />
-            <input className="videoInputSubmit" type="submit" value="Submit" onClick={handleNameAndComment} />
-            <div className="commentsMade">{
+            <div className="videoLabelAndInput">
+                <label htmlFor="name">Name:</label>
+                <input className="name" onChange={(e) => setName(e.target.value)} placeholder="Name..." value={name} />
+                <label htmlFor="comment">Comment:</label>
+                <input className="comment" onChange={(e) => setComment(e.target.value)} placeholder="..." value={comment} />
+                <input className="videoInputSubmit" type="submit" value="Submit" onClick={handleNameAndComment} />
+
+
+            </div>
+
+            <div >{
                 nameAndComment.map(el => {
-                    return <div>
-                        <h2 className="singlName"> {el.currentName}</h2>
+                    return <div className="singleCommentAndName">
+                        <h3 className="singleName"> {el.currentName}</h3>
                         <p className="singleComment"> {el.currentComment}</p>
                     </div>
                 })
