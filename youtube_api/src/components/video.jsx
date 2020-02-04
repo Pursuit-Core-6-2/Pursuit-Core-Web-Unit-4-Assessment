@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Youtube from 'react-youtube'
+import Comment from './comment_box'
 // import secrets from "./secrets"
 class Video extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Video extends Component {
             height: '390',
             width: '640',
             playerVars: {
-                autoplay: 1
+                autoplay: 0
             },
             //key: secrets.API_KEY 
         }
@@ -29,8 +30,39 @@ class Video extends Component {
         e.target.pauseVideo()
     }
 
+    handleNameChange =(e) =>{
+        this.setState({
+            name: e.target.value
+        })
+    }
+    handleCommentChange =(e) =>{
+        this.setState({
+            comment: e.target.value
+        })
+    }
+
+    handleFormSubmit = (e) =>{
+        e.preventDefault()
+
+        let {name,comment, comments} = this.state
+        let updatedComments = [...comments]
+        if(name && comment){
+            const newComment = <Comment name = {name} comment = {comment}/>
+            updatedComments.unshift(newComment)
+            this.setState({
+                comments: updatedComments,
+                name: "",
+                comment: ""
+            })
+        }
+    }
+
+
+
+
+
     render() {
-        let {name, comment} = this.state
+        let {name, comment, comments} = this.state
 
 
         return (
@@ -41,19 +73,29 @@ class Video extends Component {
                 onReady={this._onReady} />
 
                 <div>
-                    <form>
+                    <form onSubmit = {this.handleFormSubmit}>
                         <label htmlFor = "name">Name</label><br/>
                         <input  id = "name"   
                         type = "text" 
                         placeholder = "your name"
-                        value = {name}/><br/>
+                        value = {name}
+                        onChange = {this.handleNameChange}
+                        required = "required"/><br/>
                         
                         <label htmlFor = "comment">Comment</label><br/>
                         <input id = "comment" 
                         type = "text" 
                         placeholder = "your comment"
-                        value = {comment}/>
+                        value = {comment}
+                        onChange = {this.handleCommentChange}
+                        required = "required"/>
+                        <button>Submit</button>
                     </form>
+
+                </div>
+
+                <div>
+                    {comments}
                 </div>
 
             </div>

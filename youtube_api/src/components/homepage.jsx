@@ -30,7 +30,7 @@ class HomePage extends Component {
 
         try {
 
-            let  url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search_term}&key=${key}`
+            let  url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${search_term}&key=${key}`
             await axios.get(url)
                 .then(res => {
                     console.log(res.data.items[0].snippet.thumbnails.default.url)
@@ -63,7 +63,7 @@ class HomePage extends Component {
                     <button>Search</button>
                 </form>
 
-                <div>
+                <div id = "videos">
                     {videos.map((el, index) => {
                         return <ThumbNail 
                         title = {el.snippet.title}

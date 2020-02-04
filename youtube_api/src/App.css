@@ -6,6 +6,12 @@ nav p{
 nav {
   background-color: red;
 }
+
+#videos{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+}
 /* .App {
   text-align: center;
 }
