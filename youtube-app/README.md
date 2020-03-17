@@ -1,3 +1,17 @@
+# To run the app
+
+- create a secrets.js file inside youtube-app/src
+
+```js
+  const API_KEY = "YOUR KEY HERE";
+  
+  export default API_KEY;
+```
+
+- Then in /youtube-app run `npm i` to get the /node_modules
+
+- Lastly `npm start`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
