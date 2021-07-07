@@ -1,0 +1,31 @@
+.App {
+  display:block;
+  text-align: center;
+}
+
+
+input{
+  margin-top: 30px;
+  font-size: 17px;
+  padding: 6px;
+  border: none;
+  margin-right: 16px;
+  border: 1px solid black;
+
+}
+
+
+
+.container{
+  margin-top: 15px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* nav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+} */

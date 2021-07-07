@@ -1,0 +1,22 @@
+.search{
+    background-color: red;
+    color: white;
+
+  }
+
+  .inputBox{
+      width: 60%;
+  }
+
+  .noSearchPara{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: lightgray;
+      width: 60%;
+      /* margin-right: 10%; */
+      margin-left: 16%;
+      border: none;
+  }
+
+ 
